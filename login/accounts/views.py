@@ -3,12 +3,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from accounts.forms import SignUpForm
-
-
+from.models import post
 # Create your views here.
 
 def indexView(request):
-    return render(request,'index.html')
+    
+    dests = post.objects.all()
+    return render(request,"index.html",{'dests':dests})
 
 @login_required
 def dashboardView(request):
@@ -20,6 +21,8 @@ def registerView(request):
         if form.is_valid():
             form.save()
             return redirect('login_url')
+            
+
     else:
         form=SignUpForm()
-    return render(request,'registration/register.html',{'form':form})
+    return render(request,'signup.html',{'form':form})

@@ -124,6 +124,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL ='/accounts/dashboard/'
-MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
-AUTH_USER_MODEL = 'accounts.User'

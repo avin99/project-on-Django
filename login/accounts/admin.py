@@ -1,3 +1,5 @@
 from django.contrib import admin
-from.forms import SignUpForm
 
+from.models import post
+
+admin.site.register(post)
