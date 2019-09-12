@@ -1,0 +1,144 @@
+body{
+	padding: 0px;
+	margin: 0px;
+	background-color: #DDDDDD;
+	overflow: hidden; 
+}
+.loginback img{
+	border-radius: 200px;
+    position: absolute;
+    left: 250px;
+    top: 25px;
+    height: 700px;
+    width: auto;
+}
+.loginlogo img{
+	border-radius: 75px;
+	height: 139px;
+	width: auto;
+}
+.login_show{
+	position: relative;
+	left: 400px;
+}
+/*it will always be shown*/
+h1{
+	position: relative;
+	top: -100px;
+	left: 500px;
+	color: #606060;
+	font-size: 50px;
+}
+.login_show h2{
+	position: relative;
+	color: #606060;
+	right: 70px;
+}
+.login_show input{
+	position: relative;
+	left: 70px;
+	top: -55px;
+}
+.login_show button{
+	position: relative;
+	top: 170px;
+	left: -130px;
+}
+.inp{
+	font-size: 20px;
+	border: 0.1em solid #707070;
+	border-radius: 25px;
+	opacity: 0.7;
+	padding: 10px;
+}
+.inp:hover,
+.inp:focus{
+	background-color: #5C5C5C;
+	color: white;
+}
+.btn{
+	font-size: 20px;
+	background-color: #4C4C4C;
+	border: 0.1em solid #4C4C4C;
+	color: white;
+	border-radius: 25px;
+	padding: 10px 20px 10px 20px;
+	opacity: 0.8;
+	cursor: pointer;
+}
+.btn:hover,
+.btn:focus{
+	opacity: 1;
+}
+/*show the login
+.login_show{
+
+} */
+/*hide the login
+.login_hide{
+	display: none;
+}*/
+h3{
+	position: relative;
+	left: 800px;
+	top: -502px;
+	color: #606060;
+	font-size: 50px;
+	padding-top: 50px;
+	padding-left: 50px;
+	background-color: rgba(255,255,255,0.5);
+	width: 450px;
+	height: 650px;
+	border-radius: 0px 200px 200px 0px;
+
+}
+.sign_up_show h2{
+	position: relative;
+	top: -1030px;
+	left: 820px;
+	color: #303030;
+}
+.sign_up_show input{
+	position: relative;
+	left: 1000px;
+	top: -1090px;
+}
+.sign_up_show button{
+	position: relative;
+	top: -950px;
+	left: 750px;
+}
+.inp{
+	font-size: 20px;
+	border: 0.1em solid #707070;
+	border-radius: 25px;
+	opacity: 0.7;
+	padding: 10px;
+}
+.inp:hover,
+.inp:focus{
+	background-color: #5C5C5C;
+	color: white;
+}
+.btn{
+	font-size: 20px;
+	background-color: #4C4C4C;
+	border: 0.1em solid #4C4C4C;
+	color: white;
+	border-radius: 25px;
+	padding: 10px 20px 10px 20px;
+	opacity: 0.8;
+	cursor: pointer;
+}
+.btn:hover,
+.btn:focus{
+	opacity: 1;
+}
+/*show the login
+.sign_up_show{
+
+}*/
+/*hide the login
+.sign_up_hide{
+	display: none;
+}*/
