@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="./css_file/indexstyle.css">
 </head>
 <body>
+	<script type="text/javascript" src="./js_file/index.js"></script>
 	<header>
 		<div class="food3">
 			<img src="./Img/food3.jpeg">
@@ -31,11 +32,13 @@
 			<h2>Login</h2>
     	</div>
 	</a>
-	<a href="./html_file/sign_up.html">
-    	<div class="signup">
-    		<h2>Sign UP</h2>
+    	<div class="dropdown">
+    		<button onclick="myFunction()" class="dropbtn">Sign Up</button>
+    		<div id="myDropdown" class="Dropdown-content">
+    			<a href="./html_file/sign_up.html"> Sign-up as customer</a>
+    			<a href="./html_file/sign_up_owner.html">Sign-up as Owner</a>
+    		</div>
     	</div>
-	</a>
     	<div class="Entry">
     		<input class="loc_inp" type="text" placeholder="Enter Delivry Location">
     	</div>
