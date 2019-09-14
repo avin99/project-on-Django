@@ -23,4 +23,8 @@ urlpatterns = [
     path("register_as_customer/", views.register, name="register"),
     path("logout", views.logout_request, name="logout"),
     path("login", views.login_request, name="login"),
+    path("login_as_customer", views.login_as_customer, name="login_as_customer"),
+    path("customer", views.owner, name="customer"),
+    path("owner", views.customer, name="owner"),
+    
 ]

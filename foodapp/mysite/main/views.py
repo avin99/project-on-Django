@@ -6,11 +6,19 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 from .forms import NewUserForm
 
-# Create your views here.
+# Create your views here.bn  
 def homepage(request):
     return render(request = request,
                   template_name='main/home.html',
                   context = {"tutorials":Tutorial.objects.all})
+def owner(request):
+    return render(request = request,
+                  template_name='main/owner.html',
+                  context = {"tutorials":Tutorial.objects.all})  
+def customer(request):
+    return render(request = request,
+                  template_name='main/customer.html',
+                  context = {"tutorials":Tutorial.objects.all})                                  
 def register(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
@@ -72,7 +80,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}")
-                return redirect('/')
+                return redirect('main:owner')
             else:
                 messages.error(request, "Invalid username or password.")
         else:
@@ -81,3 +89,22 @@ def login_request(request):
     return render(request = request,
                     template_name = "main/login.html",
                     context={"form":form})
+def login_as_customer(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request=request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username}")
+                return redirect('main:customer')
+            else:
+                messages.error(request, "Invalid username or password.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    form = AuthenticationForm()
+    return render(request = request,
+                    template_name = "main/login_as_customer.html",
+                    context={"form":form})                    
