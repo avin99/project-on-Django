@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db import models
 from .models import *
-
+from .models import dish
 # User=get_user_model()
 
 class SignUpForm(forms.ModelForm):
@@ -21,3 +21,14 @@ class SignUpForm(forms.ModelForm):
     class Meta:
         model = User
         fields=('username','first_name','last_name','email','password','is_owner') 
+
+class dishform(forms.ModelForm):
+    class Meta:
+        model = dish
+        fields=('restaurant_address','name_of_dish','price','image',)
+
+            
+            
+            
+            
+        
