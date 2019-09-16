@@ -3,129 +3,134 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Herbs Kitchen</title>
-	<link rel="stylesheet" type="text/css" href="./css_file/indexstyle.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css_file/order_confirm.css">
+	<title>Herb's Kitchen</title>
+	<link rel="stylesheet" type="text/css" href="./css_file/index-style.css">
 </head>
 <body>
-	<script type="text/javascript" src="./js_file/index.js"></script>
-	<header>
-		<div class="food3">
-			<img src="./Img/food3.jpeg">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-4 col-5">
+				<img class="Left" src="./Img/food3.jpeg">
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-8 col-7">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-6 col-md-6 col-lg-6 col-6">
+							<a class="navbar-brand" href="index.html"><img class="logo" src="Img/logo.jpg"></a>
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-3 col-3">
+							<a href="order_now.html" class="nav-link"><img class="cart" src="./Img/cart.png">Order Now</a>							
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-3 col-3">
+							<a href="./html_file/Add_restraurent.html" class="nav-link"><img class="add" src="./Img/add.png">Add Restaurent</a>	
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 d-flex justify-content-end log">
+							<button type="button" class="btn btn-outline-dark btn-lg"><a href="./html_file/login.html">Login</a></button>
+							<div class="dropdown">
+								<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">Sign-Up <span class="caret"></span></button>
+									<ul class="dropdown-menu">
+										<li><a href="./html_file/sign_up.html">Sign-Up as customer</a></li>
+										<li><a href="./html_file/sign_up_owner.html">Sign-up as owner</a></li>
+									</ul>
+							</div>
+						</div>
+					</div>
+					<div class="row location">
+						<div class="col-12 d-flex justify-content-center">
+							<input type="text" class="form-control input-lg" placeholder="Enter your delivery location">
+							<button type="button" class="btn btn-primary btn-lg">Search</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 d-flex justify-content-center tag"><h1>Wonder Site For Foodies</h1></div>
+						<div class="col-12 d-flex justify-content-center"><h1>Life is combination of Magic and Food</h1></div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="logo">
-			<img src="./Img/logo.jpg" height="200" width="auto">
+		<div class="row best">
+			<div class="container-fluid">
+			<div class="col-12 d-flex justify-content-center"><h1>Our Best Restaurent</h1></div>
+			</div>
 		</div>
-	<a href="order_now.html">
-		<div class="cart">
-			<img src="./Img/cart.png" height="127" width="auto">
-			<h1>ORDER NOW</h1>
+		<div class="row d-flex best">
+			<div class="col-6 d-flex justify-content-center bod">
+				<img class="img_" src="Img/Background1.jpg">
+				<ul>
+					<li><h2>Taj International</h2></li>
+					<li><h3>New Delhi, C.P.</h3></li>
+					<li><p>There is no sincere love than love of food</p></li>
+				</ul>
+				<h3>4.9/5</h3>
+			</div>
+			<div class="col-6 d-flex justify-content-center bod">
+				<img class="img_" src="Img/Background1.jpg">
+				<ul>
+					<li><h2>Satkar Restaurent</h2></li>
+					<li><h3>Ghaziabad Rajnagar</h3></li>
+					<li><p>Good Food Is Good Mood</p></li>
+				</ul>
+				<h3>4.7/5</h3>
+			</div>
 		</div>
-    </a>
-    <a href="Add.html">
-		<div class="add">
-			<img src="./Img/add.png" height="127" width="auto">
-			<h1>ADD RESTAURANT</h1>
+		<div class="row d-flex best">
+			<div class="col-6 d-flex justify-content-center bod">
+				<img class="img_" src="Img/Background1.jpg">
+				<ul>
+					<li><h2>The Heritage Cafe</h2></li>
+					<li><h3>Noida Sector 62</h3></li>
+					<li><p>Tumy Rules The Mind</p></li>
+				</ul>
+				<h3>4.8/5</h3>
+			</div>
+			<div class="col-6 d-flex justify-content-center bod">
+				<img class="img_" src="Img/Background1.jpg">
+				<ul>
+					<li><h2>Wafel House</h2></li>
+					<li><h3>Windsow Street</h3></li>
+					<li><p>Hard work should be awarded by good food</p></li>
+				</ul>
+				<h3>4.7/5</h3>
+			</div>
 		</div>
-	</a>
-	<a href="./html_file/login.html">
-		<div class="login">
-			<h2>Login</h2>
-    	</div>
-	</a>
-    	<div class="dropdown">
-    		<button onclick="myFunction()" class="dropbtn">Sign Up</button>
-    		<div id="myDropdown" class="Dropdown-content">
-    			<a href="./html_file/sign_up.html"> Sign-up as customer</a>
-    			<a href="./html_file/sign_up_owner.html">Sign-up as Owner</a>
-    		</div>
-    	</div>
-    	<div class="Entry">
-    		<input class="loc_inp" type="text" placeholder="Enter Delivry Location">
-    	</div>
-    	<div class="butt">
-    		<button class="loc_but" type="Search">Search</button>
-    	</div>
-    	<div class="Tag">
-    		<h1>Wonder Site For Foodies</h1>
-    		<h2>Life Is Combination Of Magic And Food</h2>
-    	</div>
-	</header>
-	<nav>
-		<div class="best">
-			<h1>Our Best Restraunts</h1>
-			<img src="./Img/Background1.jpg">
-			<h2>Taj International</h2>
-			<h3>New Delhi, C.P.</h3>
-			<p>There is no sincere love than love of food</p>
-			<h4>4.9/5</h4>
+	</div>
+	<div class="container-fluid">
+		<div class="row"><div class="col-12 d-flex justify-content-center"><h1>Quick Search</h1></div></div>
+		<div class="row quick">
+			<div class="col-4 d-flex justify-content-center"><h1>Lunch</h1></div>
+			<div class="col-4 d-flex justify-content-center"><h1>Dinner</h1></div>
+			<div class="col-4 d-flex justify-content-center"><h1>Break Fast</h1></div>
 		</div>
-		<div class="best1">
-			<img src="./Img/sweet2.jpeg">
-			<h2>The Heritage Cafe</h2>
-			<h3>Noida Sector 62</h3>
-			<p>Tummy rules the mind</p>
-			<h4>4.8/5</h4>		
+		<div class="row quick">
+			<div class="col-4 d-flex justify-content-center"><h1>Snacks</h1></div>
+			<div class="col-4 d-flex justify-content-center"><h1>Deserts</h1></div>
+			<div class="col-4 d-flex justify-content-center"><h1>Bevrages</h1></div>
 		</div>
-		<div class="best2">
-			<img src="./Img/book tabel.jpeg">
-			<h2>Satkar Restaurent</h2>
-			<h3>Ghaziabad, Rajnagar</h3>
-			<p>Good food is good mood</p>
-			<h4>4.7/5</h4>	
+	</div>
+	<div class="container-fluid">
+		<div class="row"><div class="col-12 d-flex justify-content-center"><h1>Thanks For Visiting the Page</h1></div></div>
+		<div class="row footer">
+			<div class="d-flex justify-content-start">
+				<div class=""><a href="#">About</a></div>
+				<div class=""><a href="">Contact Us</a></div>
+				<div class=""><a href="">Devlopers</a></div>
+			</div>
 		</div>
-		<div class="best3">
-			<img src="./Img/sweet4.jpeg">
-			<h2>Waffel House</h2>
-			<h3>Windsow Street</h3>
-			<p>Hard work should be awarded by good food</p>
-			<h4>4.6/5</h4>
+		<div class="row footer">
+			<div class="col-6 d-flex justify-content-end" style="padding-top: 30px;">&copy; Herbs Kitchecn</div>
+			<div class="col-6 d-flex justify-content-end">
+				<div><a href=""><img src="Img/facebook.png"></a></div>
+				<div><a href=""><img src="Img/instagram.png"></a></div>
+				<div><a href=""><img src="Img/twiter.jpg"></a></div>
+			</div>
 		</div>
-	</nav>
-	<main>
-		<div class="quick">
-			<h1>Quick Search</h1>
-		</div>
-		<div class="background"></div>
-		<div class="content1">
-			<h1> Breakfast </h1>
-		</div>
-		<div class="content2">
-			<h1> Lunch </h1>
-		</div>
-		<div class="content3">
-			<h1> Snacks </h1>
-		</div>
-		<div class="content4">
-			<h1> Dinner </h1>
-		</div>
-		<div class="content5">
-			<h1> Desserts </h1>
-		</div>
-		<div class="content6">
-			<h1> Beverages </h1>
-		</div>
-		<h3>Thank You for Visiting the site :)</h3>
-		</main>
-	<footer>
-		<div class="about">
-			<h1>About Us</h1>
-		</div>
-		<div class="contact">
-			<h1>Conact Us</h1>
-		</div>
-		<div class="dev">  
-	    	<h1>Devlopers</h1>	 	
-	    </div>
-	    <div class="facebook">
-	    <img src="./Img/facebook.png">
-	    </div>
-	    <div class="insta">
-	    <img src="./Img/instagram.png">
-	    </div>
-	    <div class="tweet">
-	    <img src="./Img/twiter.jpg">
-	    </div>
-	    <div id="copyright">&copy; Herb's Kitchen</div>
-	</footer>
+	</div>
 </body>
 </html>
