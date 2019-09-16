@@ -1,33 +1,25 @@
 body{
-	padding: 0px;
-	margin: 0px;
+	overflow: hidden;
 }
-@include media-breakpoint-up(sm) { ... }
-@include media-breakpoint-up(md) { ... }
-@include media-breakpoint-up(lg) { ... }
-@include media-breakpoint-up(xl) { ... }
-
-.container-fluid .row .col-sm-8 img{
-	height: 200px;
-	width: 343px;
-	margin-left: 630px;
-
+.container-fluid{
+	margin: 0px;
+	padding: 0px;
+}
+.logo img{
+	height: 100px;
 }
 .container-fluid h1{
 	letter-spacing: 5px;
 	font-size: 22px;
 }
 .container-fluid h3{
-	margin-left: 500px;
 	font-weight: 2;
-}
-.container-fluid h4{
-	margin-left: 20px;
 }
 .container-fluid a{
 	padding: 20px;
 	font-size: 20px;
 	text-decoration: none;
-	position: relative;
-	top: -100px;
+}
+.fast img{
+	height: 100px;
 }
