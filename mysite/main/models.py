@@ -7,7 +7,7 @@ def get_upload_file_name(instance,filename):
 
 class User(AbstractUser):
     is_owner=models.BooleanField(default=False)
-
+    is_customer=models.BooleanField(default=False)
 class Restaurant_name(models.Model):
     username = models.ForeignKey(User,default=1,on_delete=models.CASCADE)
     restaurant_address=models.CharField(max_length=100)

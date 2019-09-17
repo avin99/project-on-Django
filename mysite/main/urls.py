@@ -3,16 +3,17 @@ from . import views
 from django.contrib.auth.views import LoginView,LogoutView
 from .views import dish_detail_view
 
-
+app_name='main'
 urlpatterns=[
-    path('',views.indexView,name="home"),
-    path('dashboard/',views.dashboardView,name="dashboard"),
-    path('login/',LoginView.as_view(),name="login.url"),
+    path("",views.homepage,name="homepage"),
+    path('register_as_customer',views.register_as_customer,name="register_as_customer"),
+    path('register_as_owner',views.register_as_owner,name="register_as_owner"),
+    path('login/',views.login_request,name="login.url"),
     path('dishlist/',views.dish_list_view,name="dishlist"),
-    path('signup/',views.registerView,name="signup"),
     path('dishdetail/',views.dish_detail_view,name='dishdetail'),
-    path('logout/',LogoutView.as_view(next_page='dashboard'),name="logout"),
-    path('restlist/',views.rest_list_view,name="restlist"),
-    path('restdetail/',views.rest_detail_view,name="restdetail"),
-    path("<single_slug>",views.single_slug,name="single_slug")
+    path('logout/',views.logout_request,name="logout"),
+   
+    path('customer_profile/',views.customer,name="customer"),
+    path('restaurant_profile/',views.restaurant,name="restaurant"),
+    #path("<single_slug>",views.single_slug,name="single_slug")
 ]
