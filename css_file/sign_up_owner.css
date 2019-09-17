@@ -1,55 +1,31 @@
-body{ overflow: hidden;
+.container-fluid{
+	margin: 0px;
+	padding: 0px; 
 }
-.container-fluid .logo{
+.logo{
 	height: 100px;
 }
-.container-fluid .background{
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-	width: 60%;
-	border-radius: 200px;
+.main{
+	height: 900px;
+	width: 600px;
+	background-image: url("../Img/coffe1.jpg");
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: 900px 600px;
 }
-.container-fluid h1{
-	text-align: center;
-	position: relative;
-	top: -600px;
+h1{
+	padding: 50px;
 }
-.container-fluid h2{
-	position: relative;
-	top: -550px;
-	padding: 20px;
-	left: 400px;
+h2, input{
+	padding-top: 20px;
+	padding-right: 150px;
+	padding-bottom: 20px;
 }
-.container-fluid input{
-	position: relative;
-	top: -620px;
-	left: 660px;
+input{
+	margin-top: 20px;
 	height: 30px;
-	width: 250px;
-	border-radius: 25px;
 }
-.container-fluid button{
-	position: relative;
-	top: -500px;
-	left: 600px;
-	width: 100px;
-	height: 30px;
-	border-radius: 25px;
-}
-
-.container-fluid p{
-	position: relative;
-	top: -650px;
-	left: 500px;
-	font-size: 22px;
-	font-weight: 30px;
-}
-.container-fluid p a{
-	text-decoration: none;
-}
-.container-fluid h3{
- position: relative;
- top: -690px;
- left: 1030px;
+p{
+	padding: 0px 150px 20px 0px;
+	font-size: 18px;
 }

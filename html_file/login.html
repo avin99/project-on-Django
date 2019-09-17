@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>login page</title>
 	<link rel="stylesheet" type="text/css" href="../css_file/login.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -12,20 +13,41 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-12 logo">
 				<a href="../index.html"><img class="logo" src="../Img/logo.jpg"></a>
 			</div>
-			<div class="col-12">
-				<img class="background" src="../Img/coffe1.jpg">
-				<div class="Login">
-					<h1>Login</h1>
-					<h2>User Name</h2>
-					<input type="text" placeholder=" User Name/ Email">
-					<h2>Password</h2>
-					<input type="Password" placeholder=" Password">
-					<button>Submit</button>
-					<p>A new User?<a href="sign_up.html"> Sign-up </a></p>
-				</div>
+		</div>
+	</div>
+	<div class="container-fluid main">
+		<div class="row">
+			<div class="col-lg-12 col-sm-12 d-flex justify-content-center">
+				<h1>Login</h1>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<div class="col-lg-3 col-sm-12">
+				<h2>User Name</h2>
+			</div>
+			<div class="col-lg-3 col-sm-12 d-flex justify-content-center">
+				<input type="text" placeholder=" User Name/ Email">
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<div class="col-lg-3 col-sm-12">
+				<h2>Password</h2>
+			</div>
+			<div class="col-lg-3 col-sm-12 d-flex justify-content-center">
+				<input type="Password" placeholder=" Password">
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<div class="col-lg-6 col-sm-12 d-flex justify-content-end">
+				<button class="btn btn-outline-dark btn-lg">Submit</button>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<div class="col-6">
+				<p>A new User?<a href="sign_up.html"> Sign-up </a></p>
 			</div>
 		</div>
 	</div>

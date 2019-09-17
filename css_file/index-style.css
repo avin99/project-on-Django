@@ -32,9 +32,6 @@ body{
 .log{
 	padding-right: 50px;
 }
-.best{
-	background-color: grey;
-}
 .best h1{
 	font-size: 50px;
 	padding: 50px;
@@ -55,12 +52,8 @@ p{
 	font-size: 22px;
 	padding-top: 50px;
 }
-.bod{
-	border-style: solid;
-	border-width: 2px;
-	border-radius: 25px;
-}
-.quick, .footer{
+
+.footer{
 	background-color: black;
 	color: white;
 }
