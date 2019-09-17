@@ -12,5 +12,7 @@ urlpatterns=[
     path('signup/',views.registerView,name="signup"),
     path('dishdetail/',views.dish_detail_view,name='dishdetail'),
     path('logout/',LogoutView.as_view(next_page='dashboard'),name="logout"),
-   
+    path('restlist/',views.rest_list_view,name="restlist"),
+    path('restdetail/',views.rest_detail_view,name="restdetail"),
+    path("<single_slug>",views.single_slug,name="single_slug")
 ]

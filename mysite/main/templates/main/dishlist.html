@@ -1,13 +1,10 @@
 {% extends 'main/header.html' %}
 
 {% block content %}
-{% for dishes in obj %}
-<h1>{{dishes.restaurant_address}}
-<h2>{{dishes.name_of_dish}}
-<h3>{{dishes.price}}
-<p>
-<img src="{{ dishes.image.url }}">
-</p>
+<div>
+{% for d in restaurants %}
+<a href='d.restaurant_slug'>
+</div>
 {% endfor %}
 {% endblock %}  
 

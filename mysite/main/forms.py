@@ -5,7 +5,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db import models
 from .models import *
-from .models import dish
+from .models import Restaurant_name
+from .models import dishes
 # User=get_user_model()
 
 class SignUpForm(forms.ModelForm):
@@ -23,12 +24,15 @@ class SignUpForm(forms.ModelForm):
         fields=('username','first_name','last_name','email','password','is_owner') 
 
 class dishform(forms.ModelForm):
-    class Meta:
-        model = dish
-        fields=('restaurant_address','name_of_dish','price','image',)
 
-            
-            
+    class Meta:
+        model = Restaurant_name
+        fields=('username','restaurant_address','description','image','dish_name','price')
+
+class dishesform(forms.ModelForm):
+    class Meta:
+        model = dishes
+        fields =('slug',)
             
             
         
