@@ -52,7 +52,13 @@ p{
 	font-size: 22px;
 	padding-top: 50px;
 }
-
+.quick img{
+	height: 100px;
+}
+.quick a{
+	text-decoration: none;
+	color: black;
+}
 .footer{
 	background-color: black;
 	color: white;
