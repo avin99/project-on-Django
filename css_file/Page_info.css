@@ -1,0 +1,47 @@
+.container-fluid{
+	margin: 0px;
+	padding: 0px;
+}
+.logo{
+	height: 100px;
+}
+.add{
+	height: 70px;
+}
+.info{
+	height: 150px;
+	border-radius: 20px;
+}
+a{
+	text-decoration: none;
+}
+.back{
+	height: 670px;
+}
+.head h1{
+	font-size: 60px;
+	margin-bottom: 10px;
+}
+.head h2{
+	font-size: 48px;
+	padding-top: 30px;
+}
+.Place{
+	background-color:grey;
+	color: white;
+}
+.footer{
+	background-color: black;
+	color: white;
+}
+.footer a{
+	padding: 20px;
+	font-size: 32px;
+	color: white;
+}
+.footer img{
+	height:50px;
+	width:50px;
+	margin: 20px;
+	border-radius: 50px; 
+}
