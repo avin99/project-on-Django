@@ -1,15 +1,11 @@
 {% extends 'main/header.html' %}
 
 {% block content %}
-<div>
+
 {% for rest in obj %}
 
-<h2>{{rest.username}}</h2>
-<h3>{{rest.restaurant_address}}</h3>
-<h4>{{rest.description}}
-</div>
-<img src='/media/{{rest.image}}'>
-<div>
-</div>
+<a href='{{rest.id}}'>{{ rest.restaurant_name }}</a>
+<h3>{{rest.street}}</h3>
+<h4>{{rest.description}}</h4>
 {% endfor %}
 {% endblock %}  

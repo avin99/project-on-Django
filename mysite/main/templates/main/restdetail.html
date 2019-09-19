@@ -1,7 +1,11 @@
+{% extends 'main/header.html' %}
+
 {% block content %}
-<form method="post" enctype="multipart/form-data">
-    {{form.as_p}}
-    {% csrf_token %}
-    <input type='submit' value='Save'/>
-</form>
-{% endblock %}
+
+{% for rest in d %}
+
+<h2>{{rest.dish_name }}</a>
+<img src="/media/{{rest.image}}">
+<h4>{{rest.price}}</h4>
+{% endfor %}
+{% endblock %}  

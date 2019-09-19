@@ -3,35 +3,47 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from .forms import SignUpForm1,dishform,SignUpForm2
-from .forms import dishesform
-from .models import dishes,Restaurant_name
-from django.views.generic import TemplateView
+from .models import dishes,Restaurant
+from django.views.generic import TemplateView,CreateView
 from django.forms import modelformset_factory
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
+from django.views.generic import DetailView
+from .forms import dishform,Restform
+from django.http import HttpResponse
 # Create your views here.
 
+
 def customer(request):
-    obj = Restaurant_name.objects.all()
+    obj = Restaurant.objects.all()
     return render(request,"main/customer_profile.html",{'obj':obj})
+  
+
+#class RestaurantCreate(CreateView):
+   # model = Restaurant
+    #template_name = 'main/restaurant_profile.html'
+    #form_class = Restform
+#def form_valid(self, form):
+    #form.instance.user = self.request.user
+    #return super(RestaurantCreate, self).form_valid(form)
 
 def restaurant(request):
     if request.method == "POST":
-        form = dishform(request.POST or None,request.FILES or None)
+        form = Restform(request.POST or None,request.FILES or None)
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.username=request.user
-            instance.save()
+            form.save()
             return render(request,"main/restaurant_profile.html")
         else:
             return render(request,"main/restaurant_profile.html",{'form' : form})
-    form = dishform()
+    form = Restform()
     return render(request,"main/restaurant_profile.html",{'form':form})
 
+#def Profile(request):
+  #  return render(request,template_name="main/profile.html",{'Restaurant_name':Restaurant_name.objects.all()})
 
 def homepage(request):
-    return render(request,template_name="main/home.html",context={'Restaurant_name':Restaurant_name.objects.all()})
+    return render(request,template_name="main/home.html",context={'dishes':dishes.objects.all()})
 
 
 def register_as_customer(request):
@@ -39,7 +51,7 @@ def register_as_customer(request):
         form = SignUpForm1(request.POST)
         if form.is_valid():
             form.save()
-            return render (request,'main/login.html')
+            return render(request,'main/login.html')
         else:
             form=SignUpForm1()
         return render(request,'registration/register.html',{'form':form})
@@ -50,28 +62,13 @@ def register_as_owner(request):
     if request.method == "POST":
         form = SignUpForm2(request.POST)
         if form.is_valid():
-            form.save()
-            return render (request,'main/login.html')
+            form.save() 
+            return render(request,'main/login.html')
         else:
             form=SignUpForm2()
         return render(request,'registration/register.html',{'form':form})
     form=SignUpForm2()
     return render(request,'registration/register.html',{'form':form})
-
-def dish_detail_view(request,):
-    if request.method == "POST":
-        form = dishesform(request.POST or None,request.FILES or None)
-        if form.is_valid():
-            form.save()
-            return render(request,'main/dishlist.html')
-    else:
-        form = dishesform()
-        
-    context={
-            'form' : form
-    }
-    return render(request,'main/dishdetail.html',context)
-
 
 def dish_list_view(request):
     obj = dishes.objects.all()
@@ -91,10 +88,7 @@ def rest_detail_view(request,):
     }
     return render(request,'main/restdetail.html',context)
     
-#def single_slug(request,single_slug):
-#restaurant = [c.restaurant_slug for c in Resataurant_name.objects.all()]
-   # if single_slug in restaurant:
-       # return redirect(request,'main/dishlist.html')
+
 
 def logout_request(request):
     logout(request)
@@ -127,3 +121,31 @@ def login_request(request):
     return render(request = request,
                     template_name = "main/login.html",
                     context={"form":form})
+
+def profile(request):
+    if request.method=='POST':
+        u_form = SignUpForm2(request.POST,instance=request.user)
+        #p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        if u_form.is_valid(): #and p_form.is_valid():
+            u_form.save()
+            #p_form.save()
+    else:
+        u_form = SignUpForm2(instance=request.user)
+        #p_form = ProfileUpdateForm(request.FILES,instance=request.user.profile)
+        context={
+            'u_form':u_form,
+            #'p_form' : p_form,
+        }
+    return render(request,'main/profile.html',context)
+ 
+#def Create_view(request):
+    #if request.method=='POST':
+      #  username=request.POST.GET("username")
+       # email = request.POST.get("email")
+       # password =request.POST.get("password")
+       # is_owner =request.POST.get("is_owner")
+       # return render(request,'main/login.html')
+
+def County_Details(request,pk):
+    d = dishes.objects.filter(username__pk=pk)
+    return render(request, 'main/restdetail.html', {'d': d})
