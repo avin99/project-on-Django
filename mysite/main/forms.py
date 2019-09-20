@@ -42,7 +42,7 @@ class Restform(forms.ModelForm):
     
     class Meta:
         model = Restaurant
-        fields=('restaurant_name','street','telephone')
+        fields=('street','telephone','description')
 #class UserUpdateForm(forms.ModelForm):
     #email=forms.EmailField()
     #class Meta:

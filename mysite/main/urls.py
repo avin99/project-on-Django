@@ -13,6 +13,8 @@ urlpatterns=[
     path('logout/',views.logout_request,name="logout"),
     path('profile/',views.profile,name="profile"),
     path('customer_profile/',views.customer,name="customer"),
+    path('add_restaurant/',views.addrestaurant,name="add_restaurant"),
+    path('post_a_dish/',views.rest_detail_view,name="rest_detail_view"),
     path('restaurant_profile/',views.restaurant,name="restaurant"),
     url(r'^customer_profile/(?P<pk>\d)/$',views.County_Details, name='County_Details'),
 ]

@@ -29,15 +29,8 @@ def customer(request):
     #return super(RestaurantCreate, self).form_valid(form)
 
 def restaurant(request):
-    if request.method == "POST":
-        form = Restform(request.POST or None,request.FILES or None)
-        if form.is_valid():
-            form.save()
-            return render(request,"main/restaurant_profile.html")
-        else:
-            return render(request,"main/restaurant_profile.html",{'form' : form})
-    form = Restform()
-    return render(request,"main/restaurant_profile.html",{'form':form})
+    return render(request,"main/restaurant_profile.html")
+       
 
 #def Profile(request):
   #  return render(request,template_name="main/profile.html",{'Restaurant_name':Restaurant_name.objects.all()})
@@ -66,9 +59,9 @@ def register_as_owner(request):
             return render(request,'main/login.html')
         else:
             form=SignUpForm2()
-        return render(request,'registration/register.html',{'form':form})
+        return render(request,'main/signup.html',{'form':form})
     form=SignUpForm2()
-    return render(request,'registration/register.html',{'form':form})
+    return render(request,'main/signup.html',{'form':form})
 
 def dish_list_view(request):
     obj = dishes.objects.all()
@@ -78,18 +71,18 @@ def rest_detail_view(request,):
     if request.method == "POST":
         form = dishform(request.POST or None,request.FILES or None)
         if form.is_valid():
-            form.save()
-            return render(request,'main/restlist.html')
+            custom = form.save(commit=False)
+            custom.username = request.user
+            custom.save()
+            return render(request,'main/home.html')
     else:
         form = dishform()
         
     context={
             'form' : form,
     }
-    return render(request,'main/restdetail.html',context)
+    return render(request,'main/dishd.html',context)
     
-
-
 def logout_request(request):
     logout(request)
     return redirect("main:homepage")
@@ -149,3 +142,19 @@ def profile(request):
 def County_Details(request,pk):
     d = dishes.objects.filter(username__pk=pk)
     return render(request, 'main/restdetail.html', {'d': d})
+
+def addrestaurant(request):
+    if request.method == "POST":
+        form = Restform(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            own = form.save(commit=False)
+            own.restaurant_name= request.user
+            own.save()
+            return render(request,'main/restaurant_profile.html')
+    else:
+        form = Restform()
+        
+    context={
+            'form' : form,
+    }
+    return render(request, 'main/add_restaurant.html',context)

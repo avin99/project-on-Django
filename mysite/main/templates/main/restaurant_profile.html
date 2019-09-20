@@ -1,7 +1,12 @@
-{% block content %}
-<form method="POST" enctype="multipart/form-data">
-    {{form.as_p}}
-    {% csrf_token %}
-    <input type='submit' value='Save'/>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<title>button</title>
+		<link rel="stylesheet" type="text/css" href="index.css">
+	</head>
+    <body>
+        <button class="button1"><a href="/add_restaurant">ADD A RESTAURANT</a></button>
+        <button class="button2"><a href="/post_a_dish">POST A DISH</a></button>
+    </body>
+</html
