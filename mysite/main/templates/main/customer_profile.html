@@ -4,8 +4,6 @@
 
 {% for rest in obj %}
 
-<a href='{{rest.id}}'>{{ rest.restaurant_name }}</a>
-<h3>{{rest.street}}</h3>
-<h4>{{rest.description}}</h4>
+<h1><a href='{{rest.id}}'>{{ rest }}</a></h1>
 {% endfor %}
 {% endblock %}  

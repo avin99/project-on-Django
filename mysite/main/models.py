@@ -9,18 +9,11 @@ class User(AbstractUser):
     is_owner=models.BooleanField(default=False)
     is_customer=models.BooleanField(default=False)
 
-class Restaurant(models.Model):
-    restaurant_name = models.OneToOneField(User,on_delete=models.CASCADE)
-    street = models.TextField(blank=True, null=True)
-    telephone = models.TextField(blank=True, null=True)
-    description = models.TextField(default="")
-
-    
-
 class dishes(models.Model):
-    username = models.ForeignKey(Restaurant,on_delete=models.CASCADE,max_length=200)
+    username = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    address = models.CharField(max_length=100)
+    description = models.TextField(default="",)
     dish_name = models.CharField(max_length=100)
     price = models.IntegerField()
     image = models.ImageField(upload_to='pics')
 
-   

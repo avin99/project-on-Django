@@ -1,7 +1,41 @@
-{% block content %}
-<form method="POST" enctype="multipart/form-data">
-    {{form.as_p}}
-    {% csrf_token %}
-    <input type='submit' value='Save'/>
-</form>
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add Restaurant</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static 'main/add.css' %}">
+</head>
+<body>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-4">
+				<img src="{% static 'main/add restaurent.jpeg' %}">
+			</div>
+			<div class="col-8">
+				<div class="row">
+					<div class="col-4 logo"><a href="../index.html"><img src="{% static 'main/logo.jpg' %}"></a></div>
+					<div class="col-4"><h1>Add Restaurent</h1></div>
+				</div>
+				<form method="POST" enctype="multipart/form-data">
+                {{form.as_p}}
+                {% csrf_token %}
+                <input type='submit' value='submit'>
+                </form>
+				<div class="row">
+					<div class="col-12">
+						<p>Thank you for registering your self</p>
+						<p>We belive you will provide your best service</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

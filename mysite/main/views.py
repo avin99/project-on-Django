@@ -3,20 +3,20 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from .forms import SignUpForm1,dishform,SignUpForm2
-from .models import dishes,Restaurant
+from .models import dishes,User
 from django.views.generic import TemplateView,CreateView
 from django.forms import modelformset_factory
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
 from django.views.generic import DetailView
-from .forms import dishform,Restform
+from .forms import dishform
 from django.http import HttpResponse
 # Create your views here.
 
 
 def customer(request):
-    obj = Restaurant.objects.all()
+    obj = User.objects.filter(id__gte=0)
     return render(request,"main/customer_profile.html",{'obj':obj})
   
 
@@ -29,13 +29,23 @@ def customer(request):
     #return super(RestaurantCreate, self).form_valid(form)
 
 def restaurant(request):
-    return render(request,"main/restaurant_profile.html")
-       
+    if request.method == "POST":
+        form = dishform(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            dish_profile = form.save(commit=False)
+            dish_profile.username= request.user
+            dish_profile.save()
+            return redirect("main:homepage")
+        else:
+            return render(request,'main/add_restaurant.html',{'form':form})
+    form = dishform()
+    return render(request,'main/add_restaurant.html',{'form':form})
 
 #def Profile(request):
   #  return render(request,template_name="main/profile.html",{'Restaurant_name':Restaurant_name.objects.all()})
 
 def homepage(request):
+    
     return render(request,template_name="main/home.html",context={'dishes':dishes.objects.all()})
 
 
