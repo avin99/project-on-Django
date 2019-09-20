@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title> page</title>
-	<link rel="stylesheet" type="text/css" href="../css_file/sign_up.css">
+	<link rel="stylesheet" type="text/css" href="../css_file/sign_up_owner.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<title>Sign-Up page</title>
 </head>
 <body>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -13,54 +13,46 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-12 logo">
-				<a href="../index.html"><img class="logo" src="../Img/logo.jpg"></a>
+			<div class="col-lg-4 col-sm-12">
+				<img class="left" src="../Img/food2.jpeg">
 			</div>
-		</div>
-	</div>
-	<div class="container-fluid main">
-		<div class="row">
-			<div class="col-lg-12 col-sm-12 d-flex justify-content-center">
-				<h1>Sign-Up</h1>
+			<div class="col-lg-8 col-sm-12">
+				<div class="row">
+					<a href="../index.html"><div class="col-4"><img class="logo" src="../Img/logo.jpg"></div></a>
+					<div class="col-8 d-flex justify-content-center"><h1>Sign-Up</h1></div>
+				</div>
+			<div class="input">
+				<div class="row">
+					<div class="col-4 pt-5 pl-5"><h3>User Name</h3></div>
+					<div class="col-8 pt-5 pl-5 "><input class="form-control input-md" type="text" placeholder="User Name"></div>
+				</div>
+				<div class="row">
+					<div class="col-4 pl-5 pt-4"><h3>Email</h3></div>
+					<div class="col-8 pl-5 pt-4 input"><input class="form-control input-md" type="text" placeholder="Email"></div>
+				</div>
+				<div class="row">
+					<div class="col-4 pl-5 pt-4"><h3>Create Password</h3></div>
+					<div class="col-8 pl-5 pt-4 input"><input class="form-control input-md" type="Password" placeholder="Create-Password"></div>
+				</div>
+				<div class="row">
+					<div class="col-4 pl-5 pt-4"><h3>Confirm Password</h3></div>
+					<div class="col-8 pl-5 pt-4 input"><input class="form-control input-md" type="Password" placeholder="Confirm-Password"></div>
+				</div>
 			</div>
-		</div>
-		<div class="row d-flex justify-content-center">
-			<div class="col-lg-3 col-sm-12">
-				<h2>User Name</h2>
-			</div>
-			<div class="col-lg-3 col-sm-12 d-flex justify-content-center">
-				<input type="text" placeholder=" User Name">
-			</div>
-		</div>
-		<div class="row d-flex justify-content-center">
-			<div class="col-lg-3">
-				<h2>Email</h2>
-			</div>
-			<div class="col-lg-3 d-flex justify-content-center">
-				<input type="text" placeholder="Email">
-			</div>
-		</div>
-		<div class="row d-flex justify-content-center">
-			<div class="col-lg-3">
-				<h2>Create Password</h2>
-			</div>
-			<div class="col-lg-3 d-flex justify-content-center">
-				<input type="Password" placeholder="Password">
-			</div>
-		</div>
-		<div class="row d-flex justify-content-center">
-			<div class="col-lg-6 d-flex justify-content-end">
-				<button class="btn btn-outline-dark btn-lg">Submit</button>
-			</div>
-		</div>
-		<div class="row d-flex justify-content-center">
-			<div class="col-lg-6 d-flex">
-				<input class="btn-outline-dark btn-lg" type="checkbox" value="owner"><p>Owner</p>
-			</div>
-		</div>
-		<div class="row d-flex justify-content-center">
-			<div class="col-lg-7 d-flex justify-content-end">
-				<p>Already a user?<a href="login.html"> Login </a></p>
+				<div class="row">
+					<div class="col-lg-2 col-sm-6 pl-5 pt-4"><h3>Owner</h3></div>
+					<div class="col-lg-10 col-sm-6 pl-5 pt-4"><input class="check" type="checkbox" value="Owner"></div>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-6 p-4 d-flex justify-content-end">
+						<button class="btn btn-outline-dark btn-lg">Submit</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6 p-5">
+						<h5>Already a user?<a href="login.html"> Login </a></h5>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
