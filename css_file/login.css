@@ -1,27 +1,9 @@
-body{overflow: hidden;}
 .container-fluid{
 	margin: 0px;
 	padding: 0px; 
 }
 .logo{
 	height: 100px;
-}
-.main{
-	height: 900px;
-	width: 600px;
-	background-image: url("../Img/coffe1.jpg");
-	background-repeat: no-repeat;
-	background-position: top;
-	background-size: 900px 600px;
-}
-h1{
-	padding: 50px;
-	font-size: 70px;
-}
-h2, input{
-	padding-top: 20px;
-	padding-right: 150px;
-	padding-bottom: 20px;
 }
 input{
 	margin-top: 20px;
