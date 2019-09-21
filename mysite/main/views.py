@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
-from .forms import SignUpForm1,dishform,SignUpForm2
-from .models import dishes,User
+from .forms import SignUpForm1,dishform,SignUpForm2,EditProfileForm
+from .models import dishes,User,UserProfile
 from django.views.generic import TemplateView,CreateView
 from django.forms import modelformset_factory
 from django.conf import settings
@@ -13,11 +13,11 @@ from django.views.generic import DetailView
 from .forms import dishform
 from django.http import HttpResponse
 # Create your views here.
-
+#customer_profile.html
 
 def customer(request):
-    obj = User.objects.filter(id__gte=0)
-    return render(request,"main/customer_profile.html",{'obj':obj})
+    obj = User.objects.filter(is_owner=True)
+    return render(request,'main/restaurantdetail.html',{'obj':obj})
   
 
 #class RestaurantCreate(CreateView):
@@ -46,7 +46,7 @@ def restaurant(request):
 
 def homepage(request):
     
-    return render(request,template_name="main/home.html",context={'dishes':dishes.objects.all()})
+    return render(request,template_name="main/index.html",context={'dishes':dishes.objects.all()})
 
 
 def register_as_customer(request):
@@ -54,19 +54,19 @@ def register_as_customer(request):
         form = SignUpForm1(request.POST)
         if form.is_valid():
             form.save()
-            return render(request,'main/login.html')
+            return render(request,'main/home.html')
         else:
             form=SignUpForm1()
-        return render(request,'registration/register.html',{'form':form})
+        return render(request,'main/signup1.html',{'form':form})
     form=SignUpForm1()
-    return render(request,'registration/register.html',{'form':form})
+    return render(request,'main/signup1.html',{'form':form})
 
 def register_as_owner(request):
     if request.method == "POST":
-        form = SignUpForm2(request.POST)
+        form = SignUpForm2(request.POST or None,request.FILES or None)
         if form.is_valid():
             form.save() 
-            return render(request,'main/login.html')
+            return render(request,'main/home.html')
         else:
             form=SignUpForm2()
         return render(request,'main/signup.html',{'form':form})
@@ -111,7 +111,6 @@ def login_request(request):
                 #messages.info(request, f"You are now logged in as {username}")    #display a message that user is logged in
                 if user.is_owner:
                     return redirect("main:restaurant")
-
                 else: 
                     return redirect("main:customer")                              
             else:                                                            #if it fails to authenticate
@@ -127,13 +126,13 @@ def login_request(request):
 
 def profile(request):
     if request.method=='POST':
-        u_form = SignUpForm2(request.POST,instance=request.user)
+        u_form = EditProfileForm(request.POST,request.FILES,instance=request.user)
         #p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
         if u_form.is_valid(): #and p_form.is_valid():
             u_form.save()
             #p_form.save()
     else:
-        u_form = SignUpForm2(instance=request.user)
+        u_form = EditProfileForm(instance=request.user)
         #p_form = ProfileUpdateForm(request.FILES,instance=request.user.profile)
         context={
             'u_form':u_form,

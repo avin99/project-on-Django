@@ -1,0 +1,76 @@
+  
+body{
+	overflow-x: hidden; 
+}
+.container-fluid{
+	margin: 0px;
+	padding: 0px;
+}
+.cart,.add{
+	margin-top: 20px;
+	height: 70px;
+	width: auto;
+}
+.logo{
+	height: 100px;
+	width: auto;
+	margin-left: 50px;
+}
+.Left{
+	height: 850px;
+}
+.location, .quick{
+	padding: 70px;
+}
+.location input{
+	width: 500px;
+	height: 70px;
+}
+.tag h1{
+	font-size: 72px;
+}
+.log{
+	padding-right: 50px;
+}
+.best h1{
+	font-size: 50px;
+	padding: 50px;
+}
+.img_ {
+	height: 228px;
+	width: 152px;
+	padding-top: 20px;
+}
+.best h2,h3{
+	padding-top: 20px;
+	padding-left: 10px;
+}
+ul{
+	list-style: none;
+}
+p{
+	font-size: 22px;
+	padding-top: 50px;
+}
+.quick img{
+	height: 100px;
+}
+.quick a{
+	text-decoration: none;
+	color: black;
+}
+.footer{
+	background-color: black;
+	color: white;
+}
+.footer a{
+	padding: 20px;
+	font-size: 32px;
+	color: white;
+}
+.footer img{
+	height:50px;
+	width:50px;
+	margin: 20px;
+	border-radius: 50px; 
+}

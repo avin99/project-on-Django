@@ -23,19 +23,19 @@
 					<div class="col-8 d-flex justify-content-center"><h1>Sign-Up</h1></div>
 				</div>
 				<form method="POST" enctype="multipart/form-data">
-				  {% csrf_token %}
-    		    <p><label for="id_username">Username:</label> <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username"> <span class="helptext"></span></p>
+                {% csrf_token %}
+    			<p><label for="id_username">Username:</label> <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username"> <span class="helptext"></span></p>
                 <p><label for="id_first_name">First name:</label> <input type="text" name="first_name" maxlength="30" id="id_first_name"> <span class="helptext"></span></p>
                 <p><label for="id_last_name">Last name:</label> <input type="text" name="last_name" maxlength="30" id="id_last_name"> <span class="helptext"></span></p>
                 <p><label for="id_email">Email:</label> <input type="email" name="email" maxlength="254" required="" id="id_email"> <span class="helptext"></span></p>
                 <p><label for="id_password1">Password:</label> <input type="password" name="password1" required="" id="id_password1"> <span class="helptext"></span></p>
                 <p><label for="id_password2">Password confirmation:</label> <input type="password" name="password2" required="" id="id_password2"> <span class="helptext"></span></p>
-                <p><label for="id_is_owner">Is owner:</label> <input type="checkbox" name="is_owner" required="" id="id_is_owner"></p>
-                <p><label for="id_image">Image:</label> <input type="file" name="image" accept="image/*" required="" id="id_image"></p>
-    			
+                <p><label for="id_is_customer">Is customer:</label> <input type="checkbox" name="is_customer" required="" id="id_is_customer"></p>
+                
+
     			<input type="submit" value="Save">
 				</form>
-				
+
 			</div>
 		</div>
 	</div>

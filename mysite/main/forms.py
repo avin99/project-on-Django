@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
@@ -23,6 +23,7 @@ class SignUpForm2(UserCreationForm):
     last_name=forms.CharField(max_length=30,required=False,help_text='Optional.')
     email=forms.EmailField(max_length=254,help_text='Required. Inform a valid email address.')
     is_owner=forms.BooleanField()
+    image =forms.ImageField()
     # def save(self, commit=True):
     #     owner = self.cleaned_data.get('owner', None)
        
@@ -30,7 +31,7 @@ class SignUpForm2(UserCreationForm):
     
     class Meta:
         model = User
-        fields=('username','first_name','last_name','email','password1','password2','is_owner') 
+        fields=('username','first_name','last_name','email','password1','password2','is_owner','image') 
 
 class dishform(forms.ModelForm):
 
@@ -38,16 +39,17 @@ class dishform(forms.ModelForm):
         model = dishes
         fields=('address','description','dish_name','price','image')
 
+class EditProfileForm(UserChangeForm):
 
-    #email=forms.EmailField()
-    #class Meta:
-      #  model = User
-       # fields =['username,email']
+    class Meta:
+        model = UserProfile
+        fields =(
+                'email',
+                'first_name',
+                'last_name',
+                'image',
+                )
 
-#class ProfileUpdateForm(forms.ModelForm):
-   # class Meta:
-     #   model = Profile
-      #  field = ['image']
 
             
             
