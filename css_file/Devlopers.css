@@ -5,10 +5,18 @@
 .logo{
 	height: 100px;
 }
-.about{
+.main{
 	width: 1000px;
 	background-color: black;
 	color: white;
+	text-align: justify;
+}
+.bod{
+	background-color: black;
+	color: white;
+}
+.bod img{
+	height: 350px;
 }
 hr.white{
 	border-top: 1px solid white;
@@ -17,6 +25,8 @@ hr.white-2{
 	border-top: 1px solid white;
 	width: 250px;
 }
-.SI{
-	height: 350px;
+@include media-breakpoint-up(sm) {
+  .logo {
+    display: block;
+  }
 }
