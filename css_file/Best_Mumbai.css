@@ -1,0 +1,16 @@
+.header img{
+	height: 100px;
+	padding: 10px;
+}
+.header h3, h1{
+	padding: 10px;
+}
+.body img{
+	height: 300px;
+}
+ul{
+	list-style: none;
+}
+ul h2{
+	margin-left: 12px;
+}
