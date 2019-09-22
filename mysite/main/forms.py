@@ -24,6 +24,7 @@ class SignUpForm2(UserCreationForm):
     email=forms.EmailField(max_length=254,help_text='Required. Inform a valid email address.')
     is_owner=forms.BooleanField()
     image =forms.ImageField()
+    location=forms.CharField(max_length=100)
     # def save(self, commit=True):
     #     owner = self.cleaned_data.get('owner', None)
        
@@ -31,7 +32,7 @@ class SignUpForm2(UserCreationForm):
     
     class Meta:
         model = User
-        fields=('username','first_name','last_name','email','password1','password2','is_owner','image') 
+        fields=('username','first_name','last_name','email','password1','password2','is_owner','image','location') 
 
 class dishform(forms.ModelForm):
 

@@ -12,12 +12,20 @@ from django.contrib import messages
 from django.views.generic import DetailView
 from .forms import dishform
 from django.http import HttpResponse
+from django.views import View
 # Create your views here.
 #customer_profile.html
 
-def customer(request):
-    obj = User.objects.filter(is_owner=True)
-    return render(request,'main/restaurantdetail.html',{'obj':obj})
+class customer(View):
+    def get(self,request):
+        obj = User.objects.filter(is_owner=True)
+        return render(request,'main/restaurantdetail.html',{'obj':obj})
+
+
+
+# def customer(request):
+    # obj = User.objects.filter(is_owner=True)
+    # return render(request,'main/restaurantdetail.html',{'obj':obj})
   
 
 #class RestaurantCreate(CreateView):
@@ -44,38 +52,82 @@ def restaurant(request):
 #def Profile(request):
   #  return render(request,template_name="main/profile.html",{'Restaurant_name':Restaurant_name.objects.all()})
 
-def homepage(request):
-    
-    return render(request,template_name="main/index.html",context={'dishes':dishes.objects.all()})
+class homepage(View):
+    def get(self,request):
+        b = User.objects.filter(location = 'Bangalore')
+        return render(request,template_name="main/index.html",context={'dishes':dishes.objects.all()})
 
 
-def register_as_customer(request):
-    if request.method == "POST":
-        form = SignUpForm1(request.POST)
+    # def homepage(request):
+    #     b = User.objects.filter(location = 'Bangalore')
+    #     return render(request,template_name="main/index.html",context={'dishes':dishes.objects.all()})
+
+class register_as_customer(View):
+    form_class=SignUpForm1
+    initial={'key':'value'}
+    template_name="main/signup1.html"
+
+    def get(self,request):
+        form=self.form_class(initial=self.initial)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request):
+        form=self.form_class(request.POST)
         if form.is_valid():
             form.save()
-            return render(request,'main/home.html')
+            return render(request,'main/index.html')
         else:
-            form=SignUpForm1()
-        return render(request,'main/signup1.html',{'form':form})
-    form=SignUpForm1()
-    return render(request,'main/signup1.html',{'form':form})
+            form=self.form_class(initial=self.initial)
+            return render(request,template_name,{'form':form}) 
 
-def register_as_owner(request):
-    if request.method == "POST":
-        form = SignUpForm2(request.POST or None,request.FILES or None)
+# def register_as_customer(request):
+#     if request.method == "POST":
+#         form = SignUpForm1(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return render(request,'main/index.html')
+#         else:
+#             form=SignUpForm1()
+#         return render(request,'main/signup1.html',{'form':form})
+#     form=SignUpForm1()
+#     return render(request,'main/signup1.html',{'form':form})
+
+class register_as_owner(View):
+    form_class=SignUpForm2
+    initial={'key':'value'}
+    template_name="main/signup.html"
+
+    def get(self,request):
+        form=self.form_class(initial=self.initial)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request):
+        form=self.form_class(request.POST or None,request.FILES or None)
         if form.is_valid():
-            form.save() 
-            return render(request,'main/home.html')
+            form.save()
+            return render(request,'main/index.html')
         else:
-            form=SignUpForm2()
-        return render(request,'main/signup.html',{'form':form})
-    form=SignUpForm2()
-    return render(request,'main/signup.html',{'form':form})
+            form=self.form_class(initial=self.initial)
+            return render(request,template_name,{'form':form})
 
-def dish_list_view(request):
-    obj = dishes.objects.all()
-    return render(request,'main/dishlist.html',{'obj':obj})
+# def register_as_owner(request):
+#     if request.method == "POST":
+#         form = SignUpForm2(request.POST or None,request.FILES or None)
+#         if form.is_valid():
+#             form.save()
+#             return render(request,'main/index.html')
+#         else:
+#             form=SignUpForm2()
+#         return render(request,'main/signup.html',{'form':form})
+#     form=SignUpForm2()
+#     return render(request,'main/signup.html',{'form':form})
+
+class dish_list_view(View):
+
+    def get(self,request):
+
+        obj = dishes.objects.all()
+        return render(request,'main/dishlist.html',{'obj':obj})
 
 def rest_detail_view(request,):
     if request.method == "POST":
@@ -149,8 +201,9 @@ def profile(request):
        # return render(request,'main/login.html')
 
 def County_Details(request,pk):
+    
     d = dishes.objects.filter(username__pk=pk)
-    return render(request, 'main/restdetail.html', {'d': d})
+    return render(request, 'main/dish_info.html', {'d': d})
 
 def addrestaurant(request):
     if request.method == "POST":
@@ -167,3 +220,7 @@ def addrestaurant(request):
             'form' : form,
     }
     return render(request, 'main/add_restaurant.html',context)
+
+def Best_Delhi(request):
+    d = User.objects.filter(location='Delhi')
+    return render(request,'main/Best_delhi.html',{'d':d})

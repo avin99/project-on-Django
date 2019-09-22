@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<title>Page Info</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'main/dish_info.css' %}">
+</head>
+<body>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- Header -->
+		<div class="conainer-fluid">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-4">
+				<a href="../index.html"><img class="logo" src="{% static 'main/logo.jpg' %}"></a>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 d-flex justify-content-center"><h1>Order Now!!!</h1></div>
+			<div class="col-lg-4 col-md-4 col-sm-4 d-flex justify-content-end">
+				<a href=""><img class="add" src="{% static 'main/add.png' %}">Add Restaurent</a>
+			</div>
+			<hr>
+			<div class="col-lg-4 col-sm-12 col-md-6"><img class="back" src="{% static '/media/{{k.image}}' %}"></div>
+			<div class="col-8">
+				<div class="row head">
+					<div class="col-lg-12 col-md-12 col-sm-12 p-3"><h1>Taj International</h1></div>
+					<div class="col-lg-12 col-md-12 col-sm-12 p-3"><h2>New Delhi C.P.</h2></div>
+					<div class="col-lg-12 col-md-12 col-sm-6 d-flex justify-content-end p-5"><h2>4.9/5</h2></div>
+					<div class="col-lg-12 col-md-12 col-sm-6 p-3"><h3>There is no sincere love than love of food</h3></div>
+				</div>
+			</div>
+		</div>
+		</div>
+	<!-- Main Body -->
+		<div class="container-fluid pt-3">
+			<div class="row d-flex justify-content-center">
+                {% for dish in d %}
+				<div class="col-lg-9 col-sm-12 d-flex justify-content-center shadow p-3 mb-5 bg-white rounded">
+				<div class="col-lg-3 col-sm-6 p-3">
+					<h1>{{dish.description}}</h1>
+					<ul>
+						<li>Omlet</li>
+						<li>Bread Butter</li>
+						<li>Coffee/Milk/Juice</li>
+					</ul>
+				</div>
+				<div class="col-3 p-3"><img class="info" src="/media/{{dish.image}}"></div>
+				<div class="col-lg-3 col-sm-12 p-3">
+					<h1>{{dish.price}}</h1>
+					<button type="button" class="btn btn-outline-dark btn-lg">+ADD</button>
+				</div>
+               
+				</div>
+                 {% endfor %}
+			</div>
+
+			
+		</div>
+		<!-- Place Order -->
+		<div class="container-fluid">
+			<a href="order_confirm.html"><div class="row">
+				<div class="col-12 d-flex justify-content-center Place"><h1>Place Order</h1></div>
+			</div></a>
+		</div>
+		<!-- Footer -->
+		<div class="container-fluid">
+		<div class="row footer">
+			<div class="col-12 d-flex justify-content-start">
+				<div class=""><a target="blank" href="../html_file/About_Us.html">About</a></div>
+				<div class=""><a href="">Contact Us</a></div>
+				<div class=""><a href="">Devlopers</a></div>
+			</div>
+		</div>
+		<div class="row footer">
+			<div class="col--lg-6 d-flex col-sm-12 justify-content-end" style="padding-top: 30px;">&copy; Herbs Kitchecn</div>
+			<div class="col-lg-6 col-sm-12 d-flex justify-content-end">
+				<div><a href=""><img src="../Img/facebook.png"></a></div>
+				<div><a href=""><img src="../Img/instagram.png"></a></div>
+				<div><a href=""><img src="../Img/twiter.jpg"></a></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

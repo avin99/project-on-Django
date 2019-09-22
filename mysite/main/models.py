@@ -11,6 +11,7 @@ class User(AbstractUser):
     is_owner=models.BooleanField(default=False)
     is_customer=models.BooleanField(default=False)
     image =models.ImageField(upload_to='pics',default="")
+    location = models.CharField(max_length=100,default="")
 
 class dishes(models.Model):
     username = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
@@ -19,6 +20,9 @@ class dishes(models.Model):
     dish_name = models.CharField(max_length=100)
     price = models.IntegerField()
     image = models.ImageField(upload_to='pics')
+    dish_choices=(
+        ('Vegetarian','Non Vegetarian')
+    )
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
@@ -32,4 +36,7 @@ def __str__(self):
 
     return self.user
 
-
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
