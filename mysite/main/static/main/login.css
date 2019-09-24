@@ -5,3 +5,24 @@
 .logo{
 	height: 100px;
 }
+.left{
+	display: block;
+}
+input{
+	margin-top:20px;
+	height: 30px;
+}
+p{
+	font-size: 18px;
+	padding: 30px;
+}
+@media only screen and (max-width: 576px){
+	.left{
+		display: none;
+	}
+}
+@media only screen and (max-width: 992px){
+	.left{
+		width: 650px;
+	}
+}

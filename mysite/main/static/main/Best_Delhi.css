@@ -6,8 +6,10 @@
 .header h3, h1{
 	padding: 10px;
 }
-.body img{
-	height: 300px;
+.bod img{
+    height: 228px;
+	width : 152px;
+	padding-top: 20px;
 }
 ul{
 	list-style: none;

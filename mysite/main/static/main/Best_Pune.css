@@ -1,13 +1,15 @@
+  
 .header img{
 	height: 100px;
-	padding: 10px;
+    padding: 10px;
+    
 }
 .header h3, h1{
 	padding: 10px;
 }
 .body img{
-	height: 300px;
-	
+    height: 300px;
+    width:200px;
 }
 ul{
 	list-style: none;

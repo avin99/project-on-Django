@@ -8,9 +8,9 @@ def get_upload_file_name(instance,filename):
     return "uploaded_files/%s_%s" % str((time()).replace('.','_'),filename)
 
 class User(AbstractUser):
-    is_owner=models.BooleanField(default=False)
-    is_customer=models.BooleanField(default=False)
-    image =models.ImageField(upload_to='pics',default="")
+    is_owner = models.BooleanField(default=False)
+    is_customer = models.BooleanField(default=False)
+    image = models.ImageField(upload_to='pics',default="")
     location = models.CharField(max_length=100,default="")
 
 class dishes(models.Model):
