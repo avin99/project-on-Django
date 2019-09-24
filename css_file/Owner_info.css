@@ -1,0 +1,27 @@
+body{
+	overflow-x: hidden;
+}
+.container-fluid{
+	padding: 0px;
+	margin: 0px;
+}
+.left{
+	height: 
+}
+.logo{
+	height: 100px;
+}
+.add{
+	height: 70px;
+}
+.bod img{
+	height: 228px;
+	width: 152px;
+	padding-top: 20px;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
