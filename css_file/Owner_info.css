@@ -2,11 +2,8 @@ body{
 	overflow-x: hidden;
 }
 .container-fluid{
-	padding: 0px;
 	margin: 0px;
-}
-.left{
-	height: 
+	padding: 0px;
 }
 .logo{
 	height: 100px;
@@ -14,14 +11,54 @@ body{
 .add{
 	height: 70px;
 }
-.bod img{
-	height: 228px;
-	width: 152px;
-	padding-top: 20px;
+.img_{
+	height: 250px;
+	width: 200px;
+	border-radius: 20px;
 }
 ul{
 	list-style: none;
 }
 a{
 	text-decoration: none;
+}
+.back{
+	height: 500px;
+	width: 550px;
+}
+.head h1{
+	font-size: 60px;
+	margin-bottom: 10px;
+}
+.head h2{
+	font-size: 48px;
+	padding-top: 30px;
+}
+.Place{
+	background-color:grey;
+	color: white;
+}
+.footer{
+	background-color: black;
+	color: white;
+}
+.footer a{
+	padding: 20px;
+	font-size: 32px;
+	color: white;
+}
+.footer img{
+	height:50px;
+	width:50px;
+	margin: 20px;
+	border-radius: 50px; 
+}
+.edit{
+	background-color: grey;
+}
+.edit a{
+	text-decoration: none;
+}
+.edit h1{
+	color: white;
 }

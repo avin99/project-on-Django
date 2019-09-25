@@ -11,15 +11,20 @@ body{
 .add{
 	height: 70px;
 }
-.info{
-	height: 150px;
+.img_{
+	height: 250px;
+	width: 200px;
 	border-radius: 20px;
+}
+ul{
+	list-style: none;
 }
 a{
 	text-decoration: none;
 }
 .back{
-	height: 350px;
+	height: 500px;
+	width: 550px;
 }
 .head h1{
 	font-size: 60px;
