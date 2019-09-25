@@ -40,7 +40,7 @@
                 <label for="inputZip">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" name="phone">
             </div>
-            <button type="submit" class="btn btn-primary">Place Order</button>
+            <button type="submit" class="btn btn-secondary">Place Order</button>
         </form>
         </div>
         <script>
@@ -73,13 +73,16 @@
                     }
                 }
                 document.getElementById('cart').innerHTML = sum;
+                console.log(sum);
                 document.getElementById('totalPrice').innerHTML = totalPrice;
-                // $('#itemsJson').val(JSON.stringify(cart));
-                // {% if thank %}
-                // alert('Thanks for ordering with us. Your order id is {{id}}. Use it to track your order using our order tracker');
-                // localStorage.clear();
-                // document.location = "/customer/1";
-                // {% endif %}
+                console.log(totalPrice);
+                $('#itemsJson').val(JSON.stringify(cart));
+                console.log(check);
+                {% if check %}
+                alert('Thanks for ordering with us. Your order id is {{id}}.');
+                localStorage.clear();
+                document.location = "/main";
+                {% endif %}
                 </script>
 </body>
 </html>

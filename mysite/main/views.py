@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from .forms import SignUpForm1,dishform,SignUpForm2,EditProfileForm
-from .models import dishes,User,UserProfile
+from .models import dishes,User,UserProfile,Orders
 from django.views.generic import TemplateView,CreateView
 from django.forms import modelformset_factory
 from django.conf import settings
@@ -376,13 +376,16 @@ def delete_rest(request,pk):
         rest = rest.objects.get(pk=pk)
         rest.delete()
         return render(request,'main/owner_info.html',{'rest':rest})
+
+
+
 def checkout(request):
     if request.method=="POST":
         items_json = request.POST.get('itemsJson', '')
         phone = request.POST.get('phone', '')
         order = Orders(items_json=items_json,phone=phone)
         order.save()
-        thank = True
+        check = True
         id = order.order_id
-        return render(request, 'main/checkout.html', {'thank':thank, 'id': id})
+        return render(request, 'main/checkout.html', {'check':check, 'id': id})
     return render(request, 'main/checkout.html')
