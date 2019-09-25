@@ -21,6 +21,7 @@ ul{
 }
 a{
 	text-decoration: none;
+	color: black;
 }
 .back{
 	height: 500px;
