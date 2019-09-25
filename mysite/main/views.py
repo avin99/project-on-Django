@@ -376,3 +376,13 @@ def delete_rest(request,pk):
         rest = rest.objects.get(pk=pk)
         rest.delete()
         return render(request,'main/owner_info.html',{'rest':rest})
+def checkout(request):
+    if request.method=="POST":
+        items_json = request.POST.get('itemsJson', '')
+        phone = request.POST.get('phone', '')
+        order = Orders(items_json=items_json,phone=phone)
+        order.save()
+        thank = True
+        id = order.order_id
+        return render(request, 'main/checkout.html', {'thank':thank, 'id': id})
+    return render(request, 'main/checkout.html')
