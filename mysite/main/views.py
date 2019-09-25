@@ -22,6 +22,7 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
 from django.views.generic import DetailView
 from .forms import dishform
+from django.db.models import Q
 from django.http import HttpResponse
 from django.views import View
 # Create your views here.
@@ -33,6 +34,10 @@ User = get_user_model()
 class customer(View):
     def get(self,request):
         obj = User.objects.filter(is_owner=True)
+        query = request.GET.get("q")
+        if query:
+            
+            obj = User.objects.filter(obj__icontains = query)
         return render(request,'main/restaurantdetail.html',{'obj':obj})
 
 
@@ -117,7 +122,7 @@ def register_as_customer(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
-            
+            user.save()
             current_site = get_current_site(request)
             mail_subject = 'Activate your blog account.'
             message = render_to_string('main/acc_active_email.html', {
@@ -141,15 +146,22 @@ def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
+        print(user)
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        # print(user)
         user = None
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
         login(request, user)
+        print(user.is_active)
         # return redirect('home')
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        print(uid,"uid")
+        # x = User.objects.filter(pk=uid)
+        # print(x,"hi")
         return HttpResponse('Activation link is invalid!')
 
 class register_as_owner(View):
@@ -287,13 +299,12 @@ class login_request(View):
 #                     template_name = "main/login.html",
 #                     context={"form":form})
 
-def profile(request):
+def edit_profile(request):
     if request.method=='POST':
         u_form = EditProfileForm(request.POST,request.FILES,instance=request.user)
         #p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
         if u_form.is_valid(): #and p_form.is_valid():
             u_form.save()
-            p_form.save()
     else:
         u_form = EditProfileForm(instance=request.user)
         #p_form = ProfileUpdateForm(request.FILES,instance=request.user.profile)
@@ -302,6 +313,8 @@ def profile(request):
             #'p_form' : p_form,
         }
     return render(request,'main/profile.html',context)
+
+
  
 #def Create_view(request):
     #if request.method=='POST':
@@ -357,3 +370,9 @@ class Best_Pune(View):
 
         d=User.objects.filter(location='Pune')
         return render(request,'main/Best_Pune.html',{'d':d})
+
+def delete_rest(request,pk):
+    if request.method=='POST':
+        rest = rest.objects.get(pk=pk)
+        rest.delete()
+        return render(request,'main/owner_info.html',{'rest':rest})

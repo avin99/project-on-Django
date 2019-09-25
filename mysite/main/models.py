@@ -25,12 +25,13 @@ class dishes(models.Model):
     )
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
-    first_name=models.CharField(max_length=100)
-    last_name=models.CharField(max_length=100)
-    email =  models.CharField(max_length=100)
+    user = models.OneToOneField(User,on_delete = models.CASCADE,null=True)
+  
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
     password = models.IntegerField()
-    image=models.ImageField(upload_to='pics')
+    image = models.ImageField(upload_to='pics')
 
 def __str__(self):
 
