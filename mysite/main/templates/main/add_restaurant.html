@@ -25,6 +25,7 @@
 				</div>
 				
                 <form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
 				<div class="row">
                 	<div class="col-lg-4 col-md-4 col-sm-12 p-3">
 						<h3><label for="id_dish_name">Dish name:</label>
@@ -57,12 +58,13 @@
 						<input type="file" name="image" accept="image/*" required="" id="id_image"></h3>
 					</div>
 				</div>
-                <input type="hidden" name="csrfmiddlewaretoken" value="Pz00GObSvTN9efaQajexFDmg0q2mrp4XEfJk35Qi7Z0ugDWVepjpyRT75Rxgz0Ji">
+                {% comment %} <input type="hidden" name="csrfmiddlewaretoken" value="Pz00GObSvTN9efaQajexFDmg0q2mrp4XEfJk35Qi7Z0ugDWVepjpyRT75Rxgz0Ji"> {% endcomment %}
                 <div class="row">
 					<div class="col-12 d-flex justify-content-center">
 						<input class="btn btn-outline-dark btn-lg" type="submit" value="submit">
 					</div>
 				</div>
+				
                 </form>
 				<div class="row">
 					<div class="col-12">

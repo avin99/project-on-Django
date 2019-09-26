@@ -121,8 +121,8 @@ USE_TZ = True
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'youremail@gmail.com'
-EMAIL_HOST_PASSWORD = "yourpassword"
+EMAIL_HOST_USER = '09ritikgupta@gmail.com'
+EMAIL_HOST_PASSWORD = "ritik0912"
 EMAIL_PORT = 587
 
 STATIC_URL = '/static/'
@@ -130,4 +130,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 AUTH_USER_MODEL='main.User'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

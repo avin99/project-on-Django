@@ -36,8 +36,7 @@ class customer(View):
         obj = User.objects.filter(is_owner=True)
         query = request.GET.get("q")
         if query:
-
-            obj = obj.filter()
+            obj = dishes.objects.filter(username__icontains='query')
         return render(request,'main/restaurantdetail.html',{'obj':obj})
 
 
@@ -67,7 +66,7 @@ def restaurant(request):
             dish_profile = form.save(commit=False)
             dish_profile.username= request.user
             dish_profile.save()
-            return redirect("main:add_restaurant")
+            return redirect("main:restaurant")
         else:
             return render(request,'main/add_restaurant.html',{'form':form})
     form = dishform()
@@ -177,9 +176,7 @@ class register_as_owner(View):
         form=self.form_class(request.POST or None,request.FILES or None)
         if form.is_valid():
             user = form.save()
-            user.refresh_from_db()
             user.save()
-            
             return render(request,'main/index.html')
         else:
             form=self.form_class(initial=self.initial)
@@ -373,9 +370,9 @@ class Best_Pune(View):
 
 def delete_rest(request,pk):
     if request.method=='POST':
-        rest = rest.objects.get(pk=pk)
-        rest.delete()
-        return render(request,'main/owner_info.html',{'rest':rest})
+        dishes = dishes.objects.get(pk=pk)
+        dishes.delete()
+        return render(request,'main/owner_info.html')
 
 def checkout(request):
     if request.method=="POST":

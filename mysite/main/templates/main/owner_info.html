@@ -46,12 +46,14 @@
 				</ul>
 			<div class="col-lg-4 col-md-4 col-sm-12">
 				<h1>{{obj.price}}</h1>
-				<button class="btn btn-danger btn-sm"><a href ="/owner_profile">- DELETE</button>
+				<form method = "post" action ="{% url 'main:delete_rest' obj.id %}">
+				{% csrf_token %} 
+				<button type="submit" class="btn btn-danger btn-sm">-DELETE</button>
+				</form>
 			</div>
 			</div>
 			</div>
         {% endfor %}
-		
 		</div>
 	</div>
 </body>
