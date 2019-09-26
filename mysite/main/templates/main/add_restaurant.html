@@ -9,33 +9,72 @@
 	<link rel="stylesheet" href="{% static 'main/add.css' %}">
 </head>
 <body>
+{% if user.is_owner %}
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-4">
-				<img src="{% static 'main/add restaurent.jpeg' %}">
+			<div class="left col-lg-4 col-md-12 col-sm-12">
+				<img  src="{% static 'main/add restaurent.jpeg' %}">
 			</div>
-			<div class="col-8">
+			<div class="col-lg-8 col-md-12 col-sm-12">
 				<div class="row">
-					<div class="col-4 logo"><a href="../index.html"><img src="{% static 'main/logo.jpg' %}"></a></div>
-					<div class="col-4"><h1>POST A DISH</h1></div>
+					<div class="col-lg-4 col-md-6 col-sm-12 logo"><a href=" "><img src="{% static 'main/logo.jpg' %}"></a></div>
+					<div class="col-lg-4 col-md-6 col-sm-12"><h1>POST A DISH</h1></div>
 				</div>
-				<form method="POST" enctype="multipart/form-data">
-                {{form.as_p}}
-                {% csrf_token %}
-                <input type='submit' value='submit'>
+				
+                <form method="POST" enctype="multipart/form-data">
+				<div class="row">
+                	<div class="col-lg-4 col-md-4 col-sm-12 p-3">
+						<h3><label for="id_dish_name">Dish name:</label>
+					</div>
+					<div class="col-lg-8 col-md-8 col-sm-12 p-3">
+						<input class="form-control input-md" type="text" name="dish_name" maxlength="100" required="" id="id_dish_name"></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-12 p-3">
+						<h3><label for="id_description">Description:</label>
+					</div>
+					<div class="col-lg-8 col-md-8 col-sm-12 p-3">
+						<textarea class="form-control input-md" name="description" cols="40" rows="10" required="" id="id_description"></textarea></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-12 p-3">
+						<h3><label for="id_price">Price:</label>
+					</div>
+					<div class="col-lg-8 col-md-8 col-sm-12 p-3"> 
+						<input class="form-control input-md" type="number" name="price" required="" id="id_price"></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-12 p-3">
+						<h3><label for="id_image">Image:</label>
+					</div> 
+					<div class="col-lg-8 col-md-8 col-sm-12 p-3">
+						<input type="file" name="image" accept="image/*" required="" id="id_image"></h3>
+					</div>
+				</div>
+                <input type="hidden" name="csrfmiddlewaretoken" value="Pz00GObSvTN9efaQajexFDmg0q2mrp4XEfJk35Qi7Z0ugDWVepjpyRT75Rxgz0Ji">
+                <div class="row">
+					<div class="col-12 d-flex justify-content-center">
+						<input class="btn btn-outline-dark btn-lg" type="submit" value="submit">
+					</div>
+				</div>
                 </form>
 				<div class="row">
 					<div class="col-12">
 						<p>Thank you for registering your self</p>
-						<p>We belive you will provide your best service</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	{% elif user.is_customer %}
+	<h1>You can't access this page</h1>
+	{% endif %}
 </body>
 </html>
 

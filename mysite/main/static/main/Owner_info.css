@@ -6,7 +6,8 @@ body{
 	margin: 0px;
 }
 .left{
-	height: 
+	height: 790px;
+	width: 500px;
 }
 .logo{
 	height: 100px;
@@ -15,13 +16,15 @@ body{
 	height: 70px;
 }
 .bod img{
-	height: 228px;
-	width: 152px;
-	padding-top: 20px;
+	height: 250px;
+	width: 200
+	px;
+	border-radius: 20px;
 }
 ul{
 	list-style: none;
 }
 a{
 	text-decoration: none;
+	color: black;
 }

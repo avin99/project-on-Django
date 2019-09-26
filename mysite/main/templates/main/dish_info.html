@@ -28,12 +28,13 @@
 				<a href=""><img class="add" src="{% static 'main/add.png' %}">Add Restaurent</a>
 			</div>
 			<hr>
-			<div class="col-lg-4 col-sm-12 col-md-6"><img class="back" src="{% static '/media/{{k.image}}' %}"></div>
+			{% for obj in k %}
+			<div class="col-lg-4 col-sm-12 col-md-6"><img class="back" src="/media/{{obj.image}}"></div>
 			<div class="col-8">
 				<div class="row head">
-					<div class="col-lg-12 col-md-12 col-sm-12 p-3"><h1>Taj International</h1></div>
-					<div class="col-lg-12 col-md-12 col-sm-12 p-3"><h2>New Delhi C.P.</h2></div>
-					
+					<div class="col-lg-12 col-md-12 col-sm-12 p-3"><h1>{{obj}}</h1></div>
+					<div class="col-lg-12 col-md-12 col-sm-12 p-3"><h2></h2></div>
+			{% endfor %}
 					<button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
 sagittis lacus vel augue laoreet rutrum faucibus.">
 
@@ -55,9 +56,6 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 					<h3>{{i.description}}</h3>
 					<h3 id="namepr{{i.id}}">{{i.dish_name}}</h3>
 					<ul>
-						<li>Omlet</li>
-						<li>Bread Butter</li>
-						<li>Coffee/Milk/Juice</li>
 					</ul>
 				</div>
 				<div class="col-3 p-3"><img class="info" src="/media/{{i.image}}"></div>

@@ -23,7 +23,7 @@ class dishes(models.Model):
    
 class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete = models.CASCADE,null=True)
-  
+    price = models.IntegerField()
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
@@ -40,6 +40,7 @@ def update_user_profile(sender, instance, created, **kwargs):
     instance.profile.save()
 
 class Orders(models.Model):
+    
     order_id = models.AutoField(primary_key=True)
     items_json = models.CharField(max_length=5000)
     phone = models.CharField(max_length=111, default="")      

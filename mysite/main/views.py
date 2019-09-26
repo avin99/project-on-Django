@@ -36,8 +36,8 @@ class customer(View):
         obj = User.objects.filter(is_owner=True)
         query = request.GET.get("q")
         if query:
-            
-            obj = User.objects.filter(obj__icontains = query)
+
+            obj = obj.filter()
         return render(request,'main/restaurantdetail.html',{'obj':obj})
 
 
@@ -67,7 +67,7 @@ def restaurant(request):
             dish_profile = form.save(commit=False)
             dish_profile.username= request.user
             dish_profile.save()
-            return redirect("main:homepage")
+            return redirect("main:add_restaurant")
         else:
             return render(request,'main/add_restaurant.html',{'form':form})
     form = dishform()
@@ -312,7 +312,7 @@ def edit_profile(request):
             'u_form':u_form,
             #'p_form' : p_form,
         }
-    return render(request,'main/profile.html',context)
+    return render(request,'main/owner_edit.html',context)
 
 
  
@@ -325,9 +325,9 @@ def edit_profile(request):
        # return render(request,'main/login.html')
 
 def County_Details(request,pk):
-    
+    k = User.objects.filter(pk=pk)
     d = dishes.objects.filter(username__pk=pk)
-    return render(request, 'main/dish_info.html', {'d': d})
+    return render(request, 'main/dish_info.html', {'d': d,'k':k })
 
 
 
@@ -376,8 +376,6 @@ def delete_rest(request,pk):
         rest = rest.objects.get(pk=pk)
         rest.delete()
         return render(request,'main/owner_info.html',{'rest':rest})
-
-
 
 def checkout(request):
     if request.method=="POST":
