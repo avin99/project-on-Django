@@ -18,6 +18,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
@@ -43,9 +44,8 @@ class customer(View):
             obj1 = User.objects.filter(
                 Q(username__icontains=query) 
                 )
-            obj2 = obj & obj1
-            
-            return render(request,'main/restaurant_details.html',{'obj2':obj2})
+            obj = obj & obj1
+            return render(request,'main/restaurantdetail.html',{'obj':obj})
         else:
 
             return render(request,'main/restaurantdetail.html',{'obj':obj})
@@ -437,13 +437,34 @@ def owner_edit(request):
     return render(request,'main/owner_edit.html')
 
 def edit_dish(request,pk):
-    dish = get_object_or_404(dishes,pk=pk)
+    dish = dishes.objects.get(pk=pk)
     if request.method=="POST":
-        form = EditDishForm(request.POST,instance = dish)
+        form = dishform(request.POST,instance = dish)
         if form.is_valid():
             form.save()
-            return render(request,"main/edit_dish.html",{'form':form})
+            # dish_profile = form.save(commit=False)
+            # dish_profile.username = request.user
+            # dish_profile.dish_name = dish.dish_name
+            # dish_profile.description = dish.description
+            # dish_profile.price = dish.price
+            # dish_profile.save()
+            return redirect("main:owner_profile")
     else:
-        form = EditDishForm(instance = dish)
-    return render(request,"main/owner_info.html",{'form':form,'dish':dish})
+        form = dishform(instance = dish)
+    return render(request,"main/owner_info2.html",{'form':form,'dish':dish})
     
+def change_password(request):
+    if request.method=='POST':
+        form = PasswordChangeForm(data=request.POST,user=request.user)
+        if form.is_valid:
+            user=form.save()
+            update_session_auth_hash(request,form.user)
+            if user.is_owner:
+                return redirect("main:owner_profile")
+            else:
+                return redirect("main:customer")
+    else:
+        form=PasswordChangeForm(user=request.user)
+
+        args = {'form':form}
+        return render(request,'main/change_password.html',args)

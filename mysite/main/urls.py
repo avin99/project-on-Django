@@ -27,7 +27,7 @@ urlpatterns=[
     path('owner_profile/',views.owner_profile, name='owner_profile'),
     url(r'^customer/(?P<pk>\d)/$',views.County_Details, name='County_Details'),
     url(r'^customer/(?P<pk>\d)/$',views.County_Details, name='County_Details'),
-    path('edit_dish/<int:pk>/',views.edit_dish, name='edit_dish'),
+    path('edit_dish/<int:pk>',views.edit_dish, name='edit_dish'),
     path("checkout/", views.checkout, name="Checkout"),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
