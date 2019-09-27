@@ -48,6 +48,9 @@
                     var cart = {};
                 } else {
                     cart = JSON.parse(localStorage.getItem('cart'));
+                   // xar = JSON.parse(localStorage.getItem('myvar'));
+                   // console.log('checking');
+                    //console.log(xar);
                 }
                 console.log(cart);
                 var sum = 0;
@@ -76,6 +79,7 @@
                 console.log(sum);
                 document.getElementById('totalPrice').innerHTML = totalPrice;
                 console.log(totalPrice);
+                console.log(cart);
                 r=(JSON.stringify(cart));
                 console.log(r);
                 console.log({{id}});

@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from .forms import SignUpForm1,dishform,SignUpForm2,EditProfileForm
-from .models import dishes,User,UserProfile,Orders
+from .models import dishes,User,UserProfile,Orders,OrderStatus
 from django.views.generic import TemplateView,CreateView
 from django.forms import modelformset_factory
 from django.conf import settings
@@ -25,6 +25,7 @@ from .forms import dishform
 from django.db.models import Q
 from django.http import HttpResponse
 from django.views import View
+import json
 # Create your views here.
 #customer_profile.html
 
@@ -385,6 +386,8 @@ def checkout(request):
         phone = request.POST.get('phone', '')
         order = Orders(items_json=items_json,phone=phone)
         order.save()
+        update = OrderStatus(order_id=order.order_id, update_desc="The order has been placed")
+        update.save()
         check = True
         id = order.order_id
         return render(request, 'main/checkout.html', {'check':check, 'id': id})

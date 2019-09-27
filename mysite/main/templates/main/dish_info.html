@@ -102,7 +102,9 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 	if (localStorage.getItem('cart') == null) {
     var cart = {};
 } else {
-    cart = JSON.parse(localStorage.getItem('cart')); 
+	console.log("checking");
+	cart = JSON.parse(localStorage.getItem('cart')); 
+	console.log(cart);
     updateCart(cart);
 }
 $('.divpr').on('click','button.cart',function() {
@@ -163,7 +165,7 @@ function updateCart(cart) {
       sum=sum+cart[item][0];
         document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-outline-dark minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-outline-dark plus'> + </button>";
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));	
     document.getElementById('cart').innerHTML = sum;
     console.log(cart);
     updatePopover(cart);
