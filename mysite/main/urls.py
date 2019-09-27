@@ -26,6 +26,7 @@ urlpatterns=[
     url(r'^customer/(?P<pk>\d)/$',views.County_Details, name='County_Details'),
     path('owner_profile/',views.owner_profile, name='owner_profile'),
     path("checkout/", views.checkout, name="Checkout"),
+    path("contact/", views.contact, name="ContactUs"),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
 ]
