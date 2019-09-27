@@ -48,9 +48,16 @@ class EditProfileForm(UserChangeForm):
                 'email',
                 'first_name',
                 'last_name',
-                'image',
                 )
 
+class EditDishForm(forms.ModelForm):
+    class Meta:
+        model = dishes
+        fields =(
+            'dish_name',
+            'price',
+            'image',
+        )
 
             
             

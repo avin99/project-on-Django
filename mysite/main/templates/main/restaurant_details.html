@@ -6,10 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<title>Order Now</title>
-	<form method='GET' action=''>
-	<input type = 'text' name='q' placeholder = 'Search restaurants' value='{{request.GET.q}}'/> 
-	<input type ='submit' value='Search'>
-	</form>
 	<link rel="stylesheet" type="text/css" href="{% static 'main/cart.css' %}">
 </head>
 <body>
@@ -29,7 +25,7 @@
 	</div>
 	<div class="container-fluid pt-3">
 		<div class="row d-flex justify-content-center">
-            {% for r in obj %}
+            {% for r in obj2 %}
 			<div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
 			<div class="col-12 d-flex shadow p-3 mb-5 bg-white rounded bod">
 			<img src="/media/{{r.image}}">

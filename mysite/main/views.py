@@ -7,6 +7,9 @@ from .models import dishes,User,UserProfile,Orders
 from django.views.generic import TemplateView,CreateView
 from django.forms import modelformset_factory
 from django.conf import settings
+from django.http import Http404
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
@@ -21,7 +24,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
 from django.views.generic import DetailView
-from .forms import dishform
+from .forms import dishform,EditDishForm
 from django.db.models import Q
 from django.http import HttpResponse
 from django.views import View
@@ -36,10 +39,16 @@ class customer(View):
         obj = User.objects.filter(is_owner=True)
         query = request.GET.get("q")
         if query:
-            obj = dishes.objects.filter(username__icontains='query')
-        return render(request,'main/restaurantdetail.html',{'obj':obj})
+            obj = User.objects.filter(is_owner=True)
+            obj1 = User.objects.filter(
+                Q(username__icontains=query) 
+                )
+            obj2 = obj & obj1
+            
+            return render(request,'main/restaurant_details.html',{'obj2':obj2})
+        else:
 
-
+            return render(request,'main/restaurantdetail.html',{'obj':obj})
 
 # def customer(request):
     # obj = User.objects.filter(is_owner=True)
@@ -115,12 +124,18 @@ class homepage(View):
 #         return render(request,'main/signup1.html',{'form':form})
 #     form=SignUpForm1()
 #     return render(request,'main/signup1.html',{'form':form})
-def register_as_customer(request):
-    if request.method == 'POST':
-        form = SignUpForm1(request.POST)
+class register_as_customer(View):
+    form_class = SignUpForm1
+    initial = {'key':'value'}
+    template_name='main/signup1.html'
+    def get(self,request):
+        form=self.form_class(initial=self.initial)
+        return render(request,self.template_name,{'form':form})
+    def post(self,request):
+        form=self.form_class(request.POST or None,request.FILES or None)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False
+            user = form.save()
+            user.is_active=False
             user.save()
             current_site = get_current_site(request)
             mail_subject = 'Activate your blog account.'
@@ -136,9 +151,30 @@ def register_as_customer(request):
             )
             email.send()
             return HttpResponse('Please confirm your email address to complete the registration')
-    else:
-        form = SignUpForm1()
-    return render(request, 'main/signup1.html', {'form': form})
+    # if request.method == 'POST':
+        
+    #     form = SignUpForm1(request.POST)
+    #     if form.is_valid():
+    #         user = form.save(commit=False)
+    #         user.is_active = False
+    #         user.save()
+            # current_site = get_current_site(request)
+            # mail_subject = 'Activate your blog account.'
+            # message = render_to_string('main/acc_active_email.html', {
+            #     'user': user,
+            #     'domain': current_site.domain,
+            #     'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+            #     'token':account_activation_token.make_token(user),
+            # })
+            # to_email = form.cleaned_data.get('email')
+            # email = EmailMessage(
+            #             mail_subject, message, to=[to_email]
+            # )
+            # email.send()
+            # return HttpResponse('Please confirm your email address to complete the registration')
+    # else:
+    #     form = SignUpForm1()
+    # return render(request, 'main/signup1.html', {'form': form})
 
 
 def activate(request, uidb64, token):
@@ -176,12 +212,26 @@ class register_as_owner(View):
         form=self.form_class(request.POST or None,request.FILES or None)
         if form.is_valid():
             user = form.save()
+            user.is_active=False
             user.save()
-            return render(request,'main/index.html')
-        else:
-            form=self.form_class(initial=self.initial)
-            return render(request,template_name,{'form':form})
+            current_site = get_current_site(request)
+            mail_subject = 'Activate your blog account.'
+            message = render_to_string('main/acc_active_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+                'token':account_activation_token.make_token(user),
+            })
+            to_email = form.cleaned_data.get('email')
+            email = EmailMessage(
+                        mail_subject, message, to=[to_email]
+            )
+            email.send()
+            return HttpResponse('Please confirm your email address to complete the registration')
 
+        else:
+            form=self.form_class(initial = self.initial)
+            return render(request,self.template_name,{'form':form})
 # def register_as_owner(request):
 #     if request.method == "POST":
 #         form = SignUpForm2(request.POST or None,request.FILES or None)
@@ -259,8 +309,8 @@ class login_request(View):
                 login(request, user)                                         #log the user into the session
                 messages.info(request, f"You are now logged in as {username}")    #display a message that user is logged in
                 if user.is_owner:
-                    return redirect("main:owner_profile")
-                else: 
+                    return redirect('main:owner_profile')
+                else:  
                     return redirect("main:customer")                              
             else:                                                            #if it fails to authenticate
                  messages.error(request, "Invalid username or password.")     #display an error message
@@ -298,18 +348,15 @@ class login_request(View):
 
 def edit_profile(request):
     if request.method=='POST':
-        u_form = EditProfileForm(request.POST,request.FILES,instance=request.user)
+        form = EditProfileForm(request.POST,request.FILES,instance=request.user)
         #p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
-        if u_form.is_valid(): #and p_form.is_valid():
-            u_form.save()
+        if form.is_valid(): #and p_form.is_valid():
+            form.save()
     else:
-        u_form = EditProfileForm(instance=request.user)
+        form = EditProfileForm(instance=request.user)
         #p_form = ProfileUpdateForm(request.FILES,instance=request.user.profile)
-        context={
-            'u_form':u_form,
-            #'p_form' : p_form,
-        }
-    return render(request,'main/owner_edit.html',context)
+        
+    return render(request,'main/owner_edit.html',{'form':form})
 
 
  
@@ -370,9 +417,10 @@ class Best_Pune(View):
 
 def delete_rest(request,pk):
     if request.method=='POST':
-        dishes = dishes.objects.get(pk=pk)
-        dishes.delete()
-        return render(request,'main/owner_info.html')
+        rest = dishes.objects.get(pk=pk)
+        rest.delete()
+        return redirect("main:owner_profile")
+    return render(request,'main/owner_info.html',{'rest':rest})
 
 def checkout(request):
     if request.method=="POST":
@@ -384,3 +432,18 @@ def checkout(request):
         id = order.order_id
         return render(request, 'main/checkout.html', {'check':check, 'id': id})
     return render(request, 'main/checkout.html')
+
+def owner_edit(request):
+    return render(request,'main/owner_edit.html')
+
+def edit_dish(request,pk):
+    dish = get_object_or_404(dishes,pk=pk)
+    if request.method=="POST":
+        form = EditDishForm(request.POST,instance = dish)
+        if form.is_valid():
+            form.save()
+            return render(request,"main/edit_dish.html",{'form':form})
+    else:
+        form = EditDishForm(instance = dish)
+    return render(request,"main/owner_info.html",{'form':form,'dish':dish})
+    

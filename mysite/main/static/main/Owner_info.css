@@ -6,8 +6,8 @@ body{
 	margin: 0px;
 }
 .left{
-	height: 790px;
-	width: 500px;
+	height: 500px;
+	width: 850px;
 }
 .logo{
 	height: 100px;
@@ -17,8 +17,7 @@ body{
 }
 .bod img{
 	height: 250px;
-	width: 200
-	px;
+	width: 200px;
 	border-radius: 20px;
 }
 ul{

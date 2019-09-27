@@ -32,18 +32,16 @@
 		</div>
 	</div>
 	<!-- MAIN -->
-	<div class="container-fluid">
-		<div class="row p-5">
+	<div class="container-fluid pt-3">
+		<div class="row d-flex justify-content-center">
             {% for obj in d %}
-			<div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+			<div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
 			<div class="col-10 d-flex justify-content-center shadow p-3 mb-5 bg-white rounded bod">
-			<div class="col-4 d-flex justify-content-center"><img src="/media/{{obj.image}}"></div>
-			<div class="col-4">
+			<img src="/media/{{obj.image}}">
 				<ul>
 					{{obj}}
 				</ul>
-			</div>
-			<div class="col-4"><h1>4.9/5</h1></div>
+			<h1>4.9/5</h1>
 			</div>
 			</div>
             {% endfor %}
