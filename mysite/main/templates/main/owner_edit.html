@@ -23,27 +23,43 @@
 					<div class="col-8 d-flex justify-content-center"><h1>Edit Profile</h1></div>
 				</div>
 				<form method="POST">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12 pt-5 pl-5">
-                        <h2><label for="id_email">Email:</label>
-                    </h2></div> 
-                    <div class="col-lg-8 col-md-6 col-sm-12 pt-5 pl-5">
-                        <input class="form-control input-md" type="text" name="email" maxlength="100" required="" id="id_email">
+                    {% comment %} <input type="hidden" name="csrfmiddlewaretoken" value="CmEMzBqkHk3xre3hR5hiBBrEf0Y2fQiXCH1Kza90JnLn685eyCIjIuQQgW2aRjaV"> {% endcomment %}
+                    {% csrf_token %}
+                    <div class="row input">
+                        <div class="col-4 pt-5 pl-5">
+                            <h3><label for="id_email">Email:</label>
+                        </div> 
+                        <div class="col-8 pt-5 pl-5">
+                            <input class="form-control input-md" type="text" name="email" value="{{user.email}}" maxlength="100" required="" id="id_email"></h3>
+                        </div>
                     </div>
+                     <div class="row input">
+                        <div class="col-4 pt-5 pl-5">
+                            <h3><label for="id_first_name">First name:</label>
+                        </div> 
+                        <div class="col-8 pt-5 pl-5">
+                            <input class="form-control input-md" type="text" name="first_name" value="{{user.first_name}}" maxlength="100" required="" id="id_first_name"></h3>
+                        </div>
+                    </div>
+                    <div class="row input">
+                        <div class="col-4 pt-5 pl-5">
+                            <h3><label for="id_last_name">Last name:</label>
+                        </div>
+                        <div class="col-8 pt-5 pl-5">
+                            <input class="form-control input-md" type="text" name="last_name" value="{{user.last_name}}" maxlength="100" required="" id="id_last_name"></h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 d-flex justify-content-end p-5">
+                            <button class="btn btn-outline-dark btn-lg"><a href="/owner_profile">SUBMIT</a></button>
+                        </div>
+                    </div>
+		        </form>
+                <div class="col-12 p-5">
+                    <p>Want To Change Password? <a href="">Change Password</a></p>    
                 </div>
-                <div class="row">
-                    
-                    <input type="hidden" name="csrfmiddlewaretoken" value="CmEMzBqkHk3xre3hR5hiBBrEf0Y2fQiXCH1Kza90JnLn685eyCIjIuQQgW2aRjaV">
-                    <p><label for="id_email">Email:</label> <input type="text" name="email" value="sharmapranat123@gmail.com" maxlength="100" required="" id="id_email"></p>
-                    <p><label for="id_first_name">First name:</label> <input type="text" name="first_name" value="pranat" maxlength="100" required="" id="id_first_name"></p>
-                    <p><label for="id_last_name">Last name:</label> <input type="text" name="last_name" value="sharma" maxlength="100" required="" id="id_last_name"></p>
-                    <p><label for="id_password">Password:</label> </p><div id="id_password">
-                </div>
-            </div>
-		</form>
                 </div>
             </div>
 		</div>
-	</div>
 </body>
 </html>

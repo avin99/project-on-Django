@@ -23,7 +23,10 @@
 				<div class="p-3"><a href="/owner_edit"><img class="add" src="{% static 'main/Edit_Profile.png' %}"><p>EDIT PROFILE</p></a></div>
 			</div>
 		</div>
-			<div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center"><img class="left" src= "/media/{{user.image}}"></div>
+		<div class="row">
+			<div class="col-lg-10 col-md-10 col-sm-12 d-flex justify-content-end"><img class="left" src= "/media/{{user.image}}"></div>
+			<div class="col-lg-2 col-md-2 col-sm-12 pl-5"><button class="btn btn-outline-dark btn-lg"><a href="/">LOGOUT</a></button></div>
+		</div>
 			<div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center p-3"><h1>{{user}}</h1></div>
 			<div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center p-4"><h2>{{user.Location}}</h2></div>
 			<div class="col-12 p-2 d-flex justify-content-center"><h3>There is no sincier love then love for food</h3></div>
@@ -39,15 +42,15 @@
 					<li><h2>{{obj.dish_name}}</h2></li>
 					<li><p>{{obj.description}}</p></li>
 				</ul>
-			<div class="col-lg-4 col-md-4 col-sm-12">
-				<h1>{{obj.price}}</h1>
+			<div class="col-lg-4 col-md-4 col-sm-12 d-flex justify-content-end p-4 but">
+				<h1 class="p-3">{{obj.price}}</h1>
 				<form method = "post" action ="{% url 'main:delete_rest' obj.id %}">
-				<button type="submit" class="btn btn-danger btn-sm">-DELETE</button>
+				<div class="p-3"><button  type="submit" class="btn btn-danger btn-sm">-DELETE</button></div>
 				{% csrf_token %}
 				</form>
 				{% comment %} <button><a href = "/edit_dish">EDIT</a></button> {% endcomment %}
 				<form method = "post" action ="{% url 'main:edit_dish' obj.id %}">
-				<button type="submit">EDIT</button>
+				<div class="pt-3"><button class="btn btn-outline-dark btn-md" type="submit">EDIT</button></div>
 				{% csrf_token %} 
 				</form> 
 			</div>

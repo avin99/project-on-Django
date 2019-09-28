@@ -6,10 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<title>Order Now</title>
-	<form method='GET' action=''>
-	<input type = 'text' name='q' placeholder = 'Search restaurants' value='{{request.GET.q}}'/> 
-	<input type ='submit' value='Search'>
-	</form>
 	<link rel="stylesheet" type="text/css" href="{% static 'main/cart.css' %}">
 </head>
 <body>
@@ -21,9 +17,20 @@
 			<div class="col-4">
 				<a href="/"><img src="{% static 'main/logo.jpg' %}"></a>
 			</div>
-			<div class="col-4 d-flex justify-content-center">
+			<div class="col-lg-4 col-md-12 col-sm-12 d-flex">
 				<h3>Hungry!!</h3>
 				<h1>ORDER NOW</h1>
+			</div>
+			<div class="col-4 d-flex justify-content-end p-4">
+				<button class="btn btn-outline-dark btn-lg"><a href = "/">LOGOUT</a></button>
+			</div>
+			<div class="col-12 d-flex justify-content-center">
+			<form method='GET' action=''>
+				<div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center">
+				<input class="search form-control input-md" type = 'text' name='q' placeholder = 'Search restaurants' value='{{request.GET.q}}'/> 
+				<input class="btn btn-outline-dark btn-lg" type ='submit' value='Search'>
+				</div>
+			</form>
 			</div>
 		</div><hr>		
 	</div>
@@ -32,11 +39,10 @@
             {% for r in obj %}
 			<div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
 			<div class="col-12 d-flex shadow p-3 mb-5 bg-white rounded bod">
-			<img src="/media/{{r.image}}">
+			<img class="body" src="/media/{{r.image}}">
 				<ul>
-                   
-					<li><h1><a href='{{r.id}}'>{{ r }}</a></h1></li>
-                    
+					{% comment %} <li><h1><a href={% url 'main:customer' obj.id %} {% endcomment %}
+					<li><h1><a href="{{r.id}}">{{ r }}</a></h1></li>
 				</ul>
 			</div>
 			</div>

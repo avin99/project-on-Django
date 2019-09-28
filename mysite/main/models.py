@@ -20,6 +20,14 @@ class dishes(models.Model):
     dish_name = models.CharField(max_length=100)
     price = models.IntegerField()
     image = models.ImageField(upload_to='pics')
+
+def delete(self,*args,**kwargs):
+    self.image.delete()
+    self.username.delete()
+    self.dish_name.delete()
+    self.description.delete()
+    self.price.delete()
+    super().delete(*args,**kwargs)
    
 class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete = models.CASCADE,null=True)
@@ -43,6 +51,8 @@ class Orders(models.Model):
     order_id = models.AutoField(primary_key=True)
     items_json = models.CharField(max_length=5000)
     phone = models.CharField(max_length=111, default="")      
+
+
 
 
 

@@ -20,21 +20,19 @@
 	<!-- Header -->
 		<div class="conainer-fluid">
 		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-4">
+			<div class="col-lg-5 col-md-6 col-sm-12">
 				<a href="../index.html"><img class="logo" src="{% static 'main/logo.jpg' %}"></a>
 			</div>
-			<div class="col-lg-8 col-md-6 col-sm-6 d-flex justify-content-center"><h1>Order Now!!!</h1></div>
-			{% for obj in k %}
-			<div class="col-lg-4 col-sm-12 col-md-6"><img class="back" src="/media/{{obj.image}}"></div>
-			<div class="col-8">
-				<div class="row head">
-					<div class="col-lg-12 col-md-12 col-sm-12 p-3"><h1>{{obj}}</h1></div>
-					<div class="col-lg-12 col-md-12 col-sm-12 p-3"><h2></h2></div>
-			{% endfor %}
-					<div class="col-lg-12 col-md-12 col-sm-6 p-3"><h3>There is no sincere love than love of food</h3></div>
-				</div>
-			</div>
+			<div class="col-lg-7 col-md-6 col-sm-12"><h1>Order Now!!!</h1></div>
 		</div>
+			{% for obj in k %}
+			<div class="col-lg-12 col-sm-12 col-md-12 d-flex justify-content-center"><img class="back" src="/media/{{obj.image}}"></div>
+				<div class="row head">
+					<div class="col-lg-12 col-md-12 col-sm-12 p-3 d-flex justify-content-center"><h1>{{obj}}</h1></div>
+					<div class="col-lg-12 col-md-12 col-sm-12 p-3 d-flex justify-content-center"><h2></h2></div>
+			{% endfor %}
+					<div class="col-lg-12 col-md-12 col-sm-6 p-3 d-flex justify-content-center"><h3>There is no sincier love than love of food</h3></div>
+				</div>
 		<div class="col-lg-12 col-md-12 col-sm-6 p-3 d-flex justify-content-end sticky-top">
 						<button type="button" class="btn btn-outline-dark btn-lg" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
 sagittis lacus vel augue laoreet rutrum faucibus.">
@@ -46,32 +44,27 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 		<div class="container-fluid pt-3">
 			<div class="row d-flex justify-content-center">
                 {% for i in d %}
-				<div class="col-lg-9 col-sm-12 d-flex justify-content-center shadow p-3 mb-5 bg-white rounded">
-				<div class="col-lg-3 col-sm-6 p-3">
-					<h3>{{i.description}}</h3>
-					<h3 id="namepr{{i.id}}">{{i.dish_name}}</h3>
+				<div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
+				<div class="col-lg-12 col-sm-12 d-flex justify-content-center shadow p-3 mb-5 bg-white rounded">
+					<div class="p-3"><img class="info" src="/media/{{i.image}}"></div>
+					<div class="p-3">
 					<ul>
+					<li><h1>{{i.description}}</h1></li>
+					<li><h3 id="namepr{{i.id}}">{{i.dish_name}}</h3></li>
+					</ul>
+					</div>
+				<div class="col-lg-4 col-sm-4 p-3 d-flex justify-content-end">
+					<ul>
+					<li><h5>Price: <span id="pricepr{{i.id}}">{{i.price}}</span></h5></li>
+					<li><span id="divpr{{i.id}}" class="divpr">
+					<button type="button" class="btn btn-outline-dark btn-lg cart" id="pr{{i.id}}" >+ADD</button>
+					</span></li>
 					</ul>
 				</div>
-				<div class="col-3 p-3"><img class="info" src="/media/{{i.image}}"></div>
-				<div class="col-lg-3 col-sm-12 p-3">
-					<h3>Price: <span id="pricepr{{i.id}}">{{i.price}}</span></h3>
-					<span id="divpr{{i.id}}" class="divpr">
-					<button type="button" class="btn btn-outline-dark btn-lg cart" id="pr{{i.id}}" >+ADD</button>
-					</span>
-				</div>
-               
+                </div>
 				</div>
                  {% endfor %}
 			</div>
-
-			
-		</div>
-		<!-- Place Order -->
-		<div class="container-fluid">
-			<a href="order_confirm.html"><div class="row">
-				<div class="col-12 d-flex justify-content-center Place"><h1>Place Order</h1></div>
-			</div></a>
 		</div>
 		<!-- Footer -->
 		<div class="container-fluid">

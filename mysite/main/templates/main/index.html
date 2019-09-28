@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<title>Herb's Kitchen</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'main/index-style.css' %}">
-	<link rel="shortcut icon" type="image/png" href="Img/He.png">
+	<link rel="shortcut icon" type="image/png" href="Img/icon.png">
 </head>
 <body>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -24,30 +24,22 @@
 						<div class="col-sm-12 col-md-6 col-lg-6">
 							<a class="navbar-brand" href=""><img class="logo" src="{% static 'main/logo.jpg' %}"></a>
 						</div>
-						<div class="col-sm-6 col-md-6 col-lg-3">
-							<a href="./html_file/cart.html" class="nav-link"><img class="cart" src="{% static 'main/cart.png' %}">Order Now</a>							
-						</div>
-						<div class="col-sm-6 col-md-6 col-lg-3">
-							<a href="./html_file/Add_restraurent.html" class="nav-link"><img class="add" src="{% static 'main/add.png' %}">Add Restaurent</a>	
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12 d-flex justify-content-end log p-5">
+						<div class="col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end log p-5">
 							<a href="login"><button type="button" class="btn btn-outline-dark btn-lg">Login</button></a>
 							<div class="dropdown">
 								<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">Sign-Up <span class="caret"></span></button>
 									<ul class="dropdown-menu">
-										<li><a href="register_as_customer/">Sign-Up as customer</a></li>
-										<li><a href="register_as_owner">Sign-up as owner</a></li>
+										<li class="p-1"><a style="text-decoration: none;" href="register_as_customer/">Sign-Up as customer</a></li>
+										<li class="p-1"><a style="text-decoration: none;" href="register_as_owner">Sign-up as owner</a></li>
 									</ul>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-12 p-2 d-flex justify-content-center tag"><h1>Wonder Site For Foodies</h1></div>
+						<div class="col-12 pt-5 d-flex justify-content-center tag"><h1>Wonder Site For Foodies</h1></div>
 						<div class="col-12 p-2 d-flex justify-content-center"><h1>Life is combination of Magic and Food</h1></div>
 						<div class="col-12 pt-5 d-flex justify-content-center"><p>POLPULAR CITIES WHERE WE ARE</p></div>
-						<div class="col-12 d-flex justify-content-center"> DELHI, BANGLORE, PUNE AND MUMBAI</div>
+						<div class="col-12 d-flex justify-content-center"> DELHI, CHENNAI, PUNE AND MUMBAI</div>
 					</div>
 				</div>
 			</div>
@@ -110,17 +102,31 @@
 		</div>
 </div>
 	</div>
+	<!-- Isometric -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class= "col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center p-5"><h1>We Have Best Restaurents</h1></div>
+			<div class= "col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center p-3"><img class="back" src="{% static 'main/isometric_restraun.png'%}"></div>
+		</div>
+	</div>
+	<!-- ALL YOU CAN FIND -->
 	<div class="container">
 		<div class="row"><div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center"><h1 style="font-size: 50px;">All you can find</h1></div></div>
 		<div class="row quick">
-			<div class="col-lg-4 col-sm-6 d-flex justify-content-center"><img src="Img/brakfast.png"><h1 class="p-2">Lunch</h1></div>
-			<div class="col-lg-4 col-sm-6 d-flex justify-content-center"><img src="Img/dish.png"><h1 class="p-2">Dinner</h1></div>
-			<div class="col-lg-4 col-sm-6 d-flex justify-content-center"><img src="Img/egg.png"><h1 class="p-2">Breakfast</h1></div>
+			<div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center p-2"><img src="{% static 'main/chicken.png'%}"></div>
+			<div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center p-2"><img src="{% static 'main/Veg.png'%}"></div>
+			<div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center p-2"><h1>From NON VEG</h1></div>
+			<div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center p-2"><h1>To VEG</h1></div>
 		</div>
 		<div class="row quick">
-			<div class="col-lg-4 col-sm-6 d-flex justify-content-center"><img src="Img/snacks.png"><h1 class="p-2">Snacks</h1></div>
-			<div class="col-lg-4 col-sm-6 d-flex justify-content-center"><img src="Img/sweet.png"><h1 class="p-2">Dessert</h1></div>
-			<div class="col-lg-4 col-sm-6 d-flex justify-content-center"><img src="Img/bevrages.png"><h1 class="p-2">Beverages</h1></div>
+			<div class="col-lg-4 col-sm-6 d-flex justify-content-center p-2"><img src="{% static 'main/brakfast.png'%}"><h1 class="p-2">Lunch</h1></div>
+			<div class="col-lg-4 col-sm-6 d-flex justify-content-center p-2"><img src="{% static 'main/dish.png'%}"><h1 class="p-2">Dinner</h1></div>
+			<div class="col-lg-4 col-sm-6 d-flex justify-content-center p-2"><img src="{% static 'main/egg.png'%}"><h1 class="p-2">Breakfast</h1></div>
+		</div>
+		<div class="row quick">
+			<div class="col-lg-4 col-sm-6 d-flex justify-content-center p-2"><img src="{% static 'main/snacks.png'%}"><h1 class="p-2">Snacks</h1></div>
+			<div class="col-lg-4 col-sm-6 d-flex justify-content-center p-2"><img src="{% static 'main/sweet.png'%}"><h1 class="p-2">Dessert</h1></div>
+			<div class="col-lg-4 col-sm-6 d-flex justify-content-center p-2"><img src="{% static 'main/bevrages.png'%}"><h1 class="p-2">Beverages</h1></div>
 		</div>
 	</div>
 	<div class="container-fluid">

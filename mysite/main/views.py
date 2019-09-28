@@ -42,7 +42,7 @@ class customer(View):
         if query:
             obj = User.objects.filter(is_owner=True)
             obj1 = User.objects.filter(
-                Q(username__icontains=query) 
+                Q(username__istartswith=query) 
                 )
             obj = obj & obj1
             return render(request,'main/restaurantdetail.html',{'obj':obj})
@@ -369,7 +369,7 @@ def edit_profile(request):
        # return render(request,'main/login.html')
 
 def County_Details(request,pk):
-    k = User.objects.filter(pk=pk)
+    k = User.objects.filter (pk=pk)
     d = dishes.objects.filter(username__pk=pk)
     return render(request, 'main/dish_info.html', {'d': d,'k':k })
 

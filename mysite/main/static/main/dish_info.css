@@ -1,3 +1,6 @@
+body{
+	overflow-x: hidden;
+}
 .container-fluid{
 	margin: 0px;
 	padding: 0px;
@@ -9,15 +12,19 @@
 	height: 70px;
 }
 .info{
-	height: 150px;
+	height: 250px;
+	width: 200px;
 	border-radius: 20px;
+}
+ul{
+	list-style: none;
 }
 a{
 	text-decoration: none;
 }
 .back{
-	height: 670px;
-	width: 500px;
+	height: 550px;
+	width: 550px;
 }
 .head h1{
 	font-size: 60px;
