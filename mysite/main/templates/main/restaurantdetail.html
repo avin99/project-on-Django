@@ -14,15 +14,16 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<div class="container-fluid">
 		<div class="row header">
-			<div class="col-4">
+			<div class="col-lg-4 col-md-12 col-sm-12">
 				<a href="/"><img src="{% static 'main/logo.jpg' %}"></a>
 			</div>
 			<div class="col-lg-4 col-md-12 col-sm-12 d-flex">
 				<h3>Hungry!!</h3>
 				<h1>ORDER NOW</h1>
 			</div>
-			<div class="col-4 d-flex justify-content-end p-4">
-				<button class="btn btn-outline-dark btn-lg"><a href = "/">LOGOUT</a></button>
+			<div class="col-lg-4 col-md-12 col-sm-12 d-flex justify-content-end pt-2">
+				<a href="/owner_edit"><img class="pro" src="{% static 'main/Edit_Profile.png' %}" ><p>PROFILE</p></a>
+				<div class="size"><button class="btn btn-outline-dark btn-lg"><a href = "/">LOGOUT</a></button></div>
 			</div>
 			<div class="col-12 d-flex justify-content-center">
 			<form method='GET' action=''>
@@ -35,19 +36,19 @@
 		</div><hr>		
 	</div>
 	<div class="container-fluid pt-3">
-		<div class="row d-flex justify-content-center">
             {% for r in obj %}
+			<div class="row d-flex justify-content-center">
 			<div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
 			<div class="col-12 d-flex shadow p-3 mb-5 bg-white rounded bod">
 			<img class="body" src="/media/{{r.image}}">
 				<ul>
 					{% comment %} <li><h1><a href={% url 'main:customer' obj.id %} {% endcomment %}
-					<li><h1><a href="{{r.id}}">{{ r }}</a></h1></li>
+					<li><h2><a href="{{r.id}}">{{ r }}</a></h2></li>
 				</ul>
 			</div>
 			</div>
+			</div>
             {% endfor %}
-		</div>
 	</div>
 </body>
 </html>

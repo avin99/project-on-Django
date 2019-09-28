@@ -1,0 +1,21 @@
+.container-fluid{
+	margin: 0px;
+	padding: 0px;
+}
+.logo{
+	height: 100px;
+}
+.contact{
+	width: 1000px;
+	background-color: black;
+	color: white;
+}
+hr.white{
+	border-top: 1px solid white;
+}
+.body img{
+	height:50px;
+	width:50px;
+	margin: 20px;
+	border-radius: 50px; 
+}

@@ -78,3 +78,21 @@ p{
 	height: 500px;
 	width: 550px;
 }
+@media only screen and (min-width: 575px){
+	.Left{
+		height: 100%;
+		width: 100%;
+		display: block;
+	}
+}
+@media only screen and (max-width: 575px){
+	.Left{
+		display: none;
+	}
+	.tag h1{
+		font-size: 32px;
+	}
+	.tag1 h1{
+		font-size: 22px;
+	}
+}

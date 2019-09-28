@@ -14,26 +14,77 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-4 col-sm-12">
+			<div class="col-lg-4 col-md-4 col-sm-4">
 				<img class="left" src="{% static 'main/food2.jpeg' %}">
 			</div>
-			<div class="col-lg-8 col-sm-12">
+			<div class="col-lg-8 col-sm-4 col-md-4">
 				<div class="row">
-					<a href="../index.html"><div class="col-4"><img class="logo" src="{% static 'main/logo.jpg' %}"></div></a>
+					<a href="/"><div class="col-4"><img class="logo" src="{% static 'main/logo.jpg' %}"></div></a>
 					<div class="col-8 d-flex justify-content-center"><h1>Sign-Up</h1></div>
 				</div>
 				<form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-    			<p><label for="id_username">Username:</label> <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username"> <span class="helptext"></span></p>
-                <p><label for="id_first_name">First name:</label> <input type="text" name="first_name" maxlength="30" id="id_first_name"> <span class="helptext"></span></p>
-                <p><label for="id_last_name">Last name:</label> <input type="text" name="last_name" maxlength="30" id="id_last_name"> <span class="helptext"></span></p>
-                <p><label for="id_email">Email:</label> <input type="email" name="email" maxlength="254" required="" id="id_email"> <span class="helptext"></span></p>
-                <p><label for="id_password1">Password:</label> <input type="password" name="password1" required="" id="id_password1"> <span class="helptext"></span></p>
-                <p><label for="id_password2">Password confirmation:</label> <input type="password" name="password2" required="" id="id_password2"> <span class="helptext"></span></p>
-                <p><label for="id_is_customer">Is customer:</label> <input type="checkbox" name="is_customer" required="" id="id_is_customer"></p>
-                
-
-    			<input type="submit" value="Save">
+			<div class="input">
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12 pt-3 pl-3">
+    					<h3><label for="id_username">Username:</label> 
+					</div>
+					<div class="col-lg-8 col-md-12 col-sm-12 pt-3 pl-3">
+						<input class="form-control input-md" type="text" name="username" maxlength="150" autofocus="" required="" id="id_username"> <span class="helptext"></span></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12 pt-3 pl-3">
+                		<h3><label for="id_first_name">First name:</label>
+					</div> 
+					<div class="col-lg-8 col-md-12 col-sm-12 pt-3 pl-3">
+						<input class="form-control input-md" type="text" name="first_name" maxlength="30" id="id_first_name"> <span class="helptext"></span></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12 pt-3 pl-3">
+                		<h3><label for="id_last_name">Last name:</label>
+					</div>
+					<div class="col-lg-8 col-md-12 col-sm-12 pt-3 pl-3">
+						<input class="form-control input-md" type="text" name="last_name" maxlength="30" id="id_last_name"> <span class="helptext"></span></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12 pt-3 pl-3">
+            	    	<h3><label for="id_email">Email:</label>
+					</div>
+					<div class="col-lg-8 col-md-12 col-sm-12 pt-3 pl-3">
+						<input class="form-control input-md" type="email" name="email" maxlength="254" required="" id="id_email"> <span class="helptext"></span></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12 pt-3 pl-3">
+                		<h3><label for="id_password1">Password:</label>
+					</div>
+					<div class= "col-lg-8 col-md-12 col-sm-12 pt-3 pl-3">  
+						<input class="form-control input-md" type="password" name="password1" required="" id="id_password1"> <span class="helptext"></span></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12 pt-3 pl-3">	
+                		<h3><label for="id_password2">Password confirmation:</label>
+				 	</div>
+					<div class="col-lg-8 col-md-12 col-sm-12 pt-3 pl-3">
+						<input class="form-control input-md" type="password" name="password2" required="" id="id_password2"> <span class="helptext"></span></h3>
+					</div>
+				</div>
+			</div>
+				<div class="row box">
+					<div class="col-lg-4 col-md-12 col-sm-12 pt-3 pl-3">
+                		<h3><label for="id_is_customer">Is customer:</label>
+					</div>
+					<div class="col-lg-8 col-md-12 col-sm-12 pt-3 pl-3"> 
+						<input type="checkbox" name="is_customer" required="" id="id_is_customer"></h3>
+					</div>
+				</div>
+					<div class="col-12 d-flex justify-content-center pl-5">
+    					<input class="btn btn-outline-dark btn-lg" type="submit" value="Save">
+					</div>
 				</form>
 
 			</div>

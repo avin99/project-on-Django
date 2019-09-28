@@ -8,7 +8,9 @@
 .logo img{
 	height: 100px;
 }
-
+.profile img{
+	height: 70px;
+}
 .form-control{
 	width: 500px;
 }

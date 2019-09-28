@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Best Of Pune</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'main/Best_Pune.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/Best_Delhi.css'%}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -15,10 +15,10 @@
 	<!-- HEADER -->
 	<div class="container-fluid">
 		<div class="row header">
-			<div class="col-4">
-				<a href="../index.html"><img src="{% static 'main/logo.jpg'%}"></a>
+			<div class="col-lg-4 coll-md-12 col-sm-12 ">
+				<a href="/"><img src="{% static 'main/logo.jpg'%}"></a>
 			</div>
-			<div class="col-4 d-flex justify-content-center">
+			<div class="col-lg-4 col-md-12 col-sm-12 d-flex justify-content-center">
 				<h3 class="p-3">Hungry!!</h3>
 				<h1 class="p-2">ORDER NOW</h1>
 				<p class="p-2">PUNE</p>
@@ -33,19 +33,25 @@
 	</div>
 	<!-- MAIN -->
 	<div class="container-fluid pt-3">
-		<div class="row d-flex justify-content-center">
         {% for obj in d %}
+		<div class="row d-flex justify-content-center">
 		<div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
 			<div class="col-12 d-flex justify-content-center shadow p-3 mb-5 bg-white rounded bod">
+			<div class="col-lg-4 col-md-4 col-sm-4 d-flex justify-content-center">
 			<img src="/media/{{obj.image}}">
-				<ul>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4">
+				<ul class="font">
 					<li><h1>{{obj}}</h1></li>
-					<li class="d-flex justify-content-center"><h1>....</h1></li>
 				</ul>
 			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 p-5">
+				<h4>4.9/5</h4>
+			</div>
+			</div>
+		</div>
 		</div>
         {% endfor %}
-		</div>
 	</div>
 </body>
 </html>

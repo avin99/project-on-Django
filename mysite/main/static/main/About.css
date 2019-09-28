@@ -1,0 +1,22 @@
+.container-fluid{
+	margin: 0px;
+	padding: 0px;
+}
+.logo{
+	height: 100px;
+}
+.about{
+	width: 1000px;
+	background-color: black;
+	color: white;
+}
+hr.white{
+	border-top: 1px solid white;
+}
+hr.white-2{
+	border-top: 1px solid white;
+	width: 250px;
+}
+.SI{
+	height: 350px;
+}

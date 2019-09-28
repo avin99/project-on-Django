@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Add Restaurant</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{% static 'main/add.css' %}">
+	<link rel="stylesheet" href="{% static 'main/signup.css' %}">
 </head>
 <body>
 {% if user.is_owner %}
@@ -15,17 +15,19 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="left col-lg-4 col-md-12 col-sm-12">
-				<img  src="{% static 'main/add restaurent.jpeg' %}">
+			<div class=" col-lg-4 col-md-4 col-sm-4">
+				<img  class="left" src="{% static 'main/add restaurent.jpeg' %}">
 			</div>
-			<div class="col-lg-8 col-md-12 col-sm-12">
+			<div class="col-lg-8 col-md-8 col-sm-8">
 				<div class="row">
-					<div class="col-lg-4 col-md-6 col-sm-12 logo"><a href=" "><img src="{% static 'main/logo.jpg' %}"></a></div>
+					<div class="col-lg-4 col-md-6 col-sm-12"><a href=" "><img class="logo" src="{% static 'main/logo.jpg' %}"></a></div>
 					<div class="col-lg-4 col-md-6 col-sm-12"><h1>POST A DISH</h1></div>
+					<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-end p-5 profile"><a href="/owner_profile"><img class="edit" src="{% static 'main/Edit_Profile.png'%}"> PROFILE </a></div>
 				</div>
 				
                 <form method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
+				<div class="input">
 				<div class="row">
                 	<div class="col-lg-4 col-md-4 col-sm-12 p-3">
 						<h3><label for="id_dish_name">Dish name:</label>
@@ -50,6 +52,7 @@
 						<input class="form-control input-md" type="number" name="price" required="" id="id_price"></h3>
 					</div>
 				</div>
+			</div>
 				<div class="row">
 					<div class="col-lg-4 col-md-4 col-sm-12 p-3">
 						<h3><label for="id_image">Image:</label>

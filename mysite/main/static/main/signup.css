@@ -1,5 +1,7 @@
+body{
+	overflow-x: hidden;
+}
 .container-fluid{
-	width:100%;
 	margin: 0px;
 	padding: 0px; 
 }
@@ -7,13 +9,34 @@
 .logo{
 	height: 100px;
 }
+.edit{
+	height: 70px;
+}
 .left{
-	height: 750px;
+	height: 90%;
+	display: block;
 }
 .input input{
 	width: 350px;
 }
 .box input{
-	height: 30px;
-	width: 30px;
+	height: 20px;
+	width: 20px;
+}
+@media only screen and (min-width: 575px){
+	.left{
+		height: 100%;
+		width: 100%;
+	}
+	.input input{
+		width: 90%;
+	}
+}
+@media only screen and (max-width: 575px){
+	.left{
+		display: none;
+	}
+	.input input{
+		width: 90%;
+	}
 }

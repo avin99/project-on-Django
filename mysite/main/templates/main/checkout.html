@@ -32,7 +32,7 @@
                 </nav>
             </div>
         </div>
-        <h3>Step 2 - Enter your Details:</h3>
+        <h3> Enter your Details:</h3>
         <form method="post" action="/checkout/">{% csrf_token %}
             <input type="hidden" name="itemsJson" id="itemsJson">
             
@@ -40,7 +40,7 @@
                 <label for="inputZip">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" name="phone">
             </div>
-            <button type="submit" class="btn btn-secondary">Place Order</button>
+            <button type="submit" class="btn btn-secondary" id="exe">Place Order</button>
         </form>
         </div>
         <script>
@@ -48,6 +48,9 @@
                     var cart = {};
                 } else {
                     cart = JSON.parse(localStorage.getItem('cart'));
+                   // xar = JSON.parse(localStorage.getItem('myvar'));
+                   // console.log('checking');
+                    //console.log(xar);
                 }
                 console.log(cart);
                 var sum = 0;
@@ -76,13 +79,26 @@
                 console.log(sum);
                 document.getElementById('totalPrice').innerHTML = totalPrice;
                 console.log(totalPrice);
+                console.log(cart);
+                r=(JSON.stringify(cart));
+                console.log(r);
+                console.log({{id}});
                 $('#itemsJson').val(JSON.stringify(cart));
-                console.log(check);
-                {% if check %}
-                alert('Thanks for ordering with us. Your order id is {{id}}.');
+                
+                // console.log({{id}});
+                // console.log({{check}});
+                $("#exe").click(function(){
+                //    alert('Thanks for ordering with us. Your order id is {{id}}.');
+                //    localStorage.clear();
+                //    document.location = "/customer/3";
+                  
+                
+                alert('Thanks for ordering with us. press OK for confirming your order .');
                 localStorage.clear();
-                document.location = "/main";
-                {% endif %}
+                window.location = "http://127.0.0.1:8000/customer";
+                //document.location = "/main";
+               
+            });
                 </script>
 </body>
 </html>

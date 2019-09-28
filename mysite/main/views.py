@@ -293,7 +293,7 @@ class logout_request(View):
 class login_request(View):
     form_class = AuthenticationForm
     initial={'key':'value'}
-    template_name="main/login.html"
+    template_name="main/login.html" 
 
     def get(self,request):
         form=self.form_class(initial=self.initial)
@@ -330,7 +330,7 @@ class login_request(View):
 #             user = authenticate(username=username, password=password)        #authenticating the user i.e. username and passwords match simultaneously with a user's profile in database
 #             if user is not None:                                             #basically means "if user is true i.e. if user is successfully authenticated"
 #                 login(request, user)                                         #log the user into the session
-#                 messages.info(request, f"You are now logged in as {username}")    #display a message that user is logged in
+#                 messages.info(request, f"You are now logged in as {username}")    
 #                 if user.is_owner:
 #                      return redirect("main:restaurant")
 #                 else: 
@@ -433,38 +433,64 @@ def checkout(request):
         return render(request, 'main/checkout.html', {'check':check, 'id': id})
     return render(request, 'main/checkout.html')
 
-def owner_edit(request):
-    return render(request,'main/owner_edit.html')
+class owner_edit(View):
+    def get(self,request):
+        return render(request,'main/owner_edit.html')
 
+# class edit_dish(View):
+#     form_class = dishform
+#     initial={'key':'value'}
+#     template_name="main/owner_info2.html"
+
+#     def get(self,request):
+#         form=self.form_class(initial=self.initial)
+#         return render(request,self.template_name,{'form':form})
+#     def post(self,request):
+#         form=self.form_class(request.POST or None,request.FILES or None)
+#         if form.is_valid():
+#             form.save()
+#             return redirect("main:owner_profile")
+#         else:
+#             form=self.form_class(initial=self.initial)
+            
 def edit_dish(request,pk):
     dish = dishes.objects.get(pk=pk)
     if request.method=="POST":
         form = dishform(request.POST,instance = dish)
         if form.is_valid():
             form.save()
-            # dish_profile = form.save(commit=False)
-            # dish_profile.username = request.user
-            # dish_profile.dish_name = dish.dish_name
-            # dish_profile.description = dish.description
-            # dish_profile.price = dish.price
-            # dish_profile.save()
             return redirect("main:owner_profile")
     else:
         form = dishform(instance = dish)
     return render(request,"main/owner_info2.html",{'form':form,'dish':dish})
-    
-def change_password(request):
-    if request.method=='POST':
-        form = PasswordChangeForm(data=request.POST,user=request.user)
-        if form.is_valid:
-            user=form.save()
-            update_session_auth_hash(request,form.user)
-            if user.is_owner:
-                return redirect("main:owner_profile")
-            else:
-                return redirect("main:customer")
-    else:
-        form=PasswordChangeForm(user=request.user)
 
-        args = {'form':form}
-        return render(request,'main/change_password.html',args)
+def About_Us(request):
+    return render(request,"main/About_Us.html")
+
+
+def Contact_Us(request):
+    return render(request,"main/Contact_Us.html")
+
+
+def Devlopers(request):
+    return render(request,"main/Devlopers.html")
+
+
+# @login_required
+# def password_change(request):
+#     if request.method=='POST':
+#         form = PasswordChangeForm(data=request.POST,user=request.user)
+#         if form.is_valid():
+#             user=form.save()
+#             update_session_auth_hash(request,form.user)
+#             if user.is_owner:
+#                 return redirect("main:owner_profile")
+#             else:
+#                 return redirect("main:customer")
+#         else:
+#             return redirect("main:password_change")
+#     else:
+#         form=PasswordChangeForm(user=request.user)
+#         args = {'form':form}
+#         return render(request,'main/password_change.html',args)
+

@@ -1,5 +1,4 @@
-  
-.header img{
+ .header img{
 	height: 100px;
 	padding: 10px;
 }
@@ -9,11 +8,11 @@
 .bod img{
     height: 228px;
 	width : 152px;
-	padding-top: 20px;
+	border-radius: 20px;
 }
 ul{
 	list-style: none;
 }
-ul h2{
-	margin-left: 12px;
+.font{
+	font-size:32px;
 }

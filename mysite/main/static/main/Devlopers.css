@@ -1,0 +1,37 @@
+.container-fluid{
+	margin: 0px;
+	padding: 0px;
+}
+.logo{
+	height: 100px;
+	display: block;
+}
+.main{
+	width: 1000px;
+	background-color: black;
+	color: white;
+	text-align: justify;
+}
+.bod{
+	background-color: black;
+	color: white;
+}
+.bod img{
+	height: 300px;
+}
+.Ritik img{
+	height: 250px;
+	transform: rotate(90deg);
+}
+hr.white{
+	border-top: 1px solid white;
+}
+hr.white-2{
+	border-top: 1px solid white;
+	width: 250px;
+}
+/*@media only screen and (max-width: 576px){
+	.logo{
+		display: none;
+	}
+}*/
