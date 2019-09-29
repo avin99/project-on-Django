@@ -21,13 +21,13 @@ class dishes(models.Model):
     price = models.IntegerField()
     image = models.ImageField(upload_to='pics')
 
-    def delete(self,*args,**kwargs):
-        self.image.delete()
-        self.username.delete()
-        self.dish_name.delete()
-        self.description.delete()
-        self.price.delete()
-        super().delete(*args,**kwargs)
+    # def delete(self,*args,**kwargs):
+    #     self.image.delete()
+    #     self.username.delete()
+    #     self.dish_name.delete()
+    #     self.description.delete()
+    #     self.price.delete()
+    #     super().delete(*args,**kwargs)
    
 class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete = models.CASCADE,null=True)

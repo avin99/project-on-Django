@@ -302,34 +302,34 @@ class login_request(View):
     def post(self,request):
         form=self.form_class(request=request,data=request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')                     #saving the username form the form
-            password = form.cleaned_data.get('password')                     #saving the password from the form
-            user = authenticate(username=username, password=password)        #authenticating the user i.e. username and passwords match simultaneously with a user's profile in database
-            if user is not None:                                             #basically means "if user is true i.e. if user is successfully authenticated"
-                login(request, user)                                         #log the user into the session
-                messages.info(request, f"You are now logged in as {username}")    #display a message that user is logged in
+            username = form.cleaned_data.get('username')                    
+            password = form.cleaned_data.get('password')                     
+            user = authenticate(username=username, password=password)        
+            if user is not None:                                            
+                login(request, user)                                         
+                messages.info(request, f"You are now logged in as {username}")    
                 if user.is_owner:
                     return redirect('main:owner_profile')
                 else:  
                     return redirect("main:customer")                              
-            else:                                                            #if it fails to authenticate
-                 messages.error(request, "Invalid username or password.")     #display an error message
+            else:                                                            
+                 messages.error(request, "Invalid username or password.")     
                  form=self.form_class(initial=self.initial)
                  return render(request,self.template_name,{'form':form})
-        else:                                                                #if the form is not valid
+        else:                                                                
             form=self.form_class(initial=self.initial)
             return render(request,self.template_name,{'form':form})
 
 # def login_request(request):                                                            
-#     if request.method == 'POST':                                             #if user hits the login button
+#     if request.method == 'POST':                                             
 #         form = AuthenticationForm(request=request, data=request.POST)
 #         if form.is_valid():
-#                                                               #if the form is valid
-#             username = form.cleaned_data.get('username')                     #saving the username form the form
-#             password = form.cleaned_data.get('password')                     #saving the password from the form
-#             user = authenticate(username=username, password=password)        #authenticating the user i.e. username and passwords match simultaneously with a user's profile in database
-#             if user is not None:                                             #basically means "if user is true i.e. if user is successfully authenticated"
-#                 login(request, user)                                         #log the user into the session
+#                                                              
+#             username = form.cleaned_data.get('username')                     
+#             password = form.cleaned_data.get('password')                    
+#             user = authenticate(username=username, password=password)         
+#             if user is not None:                                             
+#                 login(request, user)                                         
 #                 messages.info(request, f"You are now logged in as {username}")    
 #                 if user.is_owner:
 #                      return redirect("main:restaurant")
