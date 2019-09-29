@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from .forms import SignUpForm1,dishform,SignUpForm2,EditProfileForm
-from .models import dishes,User,UserProfile,Orders
+from .models import dishes,User,UserProfile,Orders,OrderStatus,Contact
 from django.views.generic import TemplateView,CreateView
 from django.forms import modelformset_factory
 from django.conf import settings
@@ -29,6 +29,7 @@ from .forms import dishform,EditDishForm
 from django.db.models import Q
 from django.http import HttpResponse
 from django.views import View
+import json
 # Create your views here.
 #customer_profile.html
 
@@ -428,11 +429,14 @@ def checkout(request):
         phone = request.POST.get('phone', '')
         order = Orders(items_json=items_json,phone=phone)
         order.save()
+        update = OrderStatus(order_id=order.order_id, update_desc="The order has been placed")
+        update.save()
         check = True
         id = order.order_id
         return render(request, 'main/checkout.html', {'check':check, 'id': id})
     return render(request, 'main/checkout.html')
 
+<<<<<<< HEAD
 class owner_edit(View):
     def get(self,request):
         return render(request,'main/owner_edit.html')
@@ -494,3 +498,14 @@ def Devlopers(request):
 #         args = {'form':form}
 #         return render(request,'main/password_change.html',args)
 
+=======
+def contact(request):
+    if request.method=="POST":
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        phone = request.POST.get('phone', '')
+        desc = request.POST.get('desc', '')
+        contact = Contact(name=name, email=email, phone=phone, desc=desc)
+        contact.save()
+    return render(request, 'main/contact.html')  
+>>>>>>> 1b40ab6eec0c3b53edde11509c8703cc5bc8ee0d
