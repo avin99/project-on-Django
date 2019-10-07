@@ -37,11 +37,15 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
 			<div class="col-12 d-flex justify-content-center shadow p-3 mb-5 bg-white rounded bod">
+			<div class="col-4">
 			<img src="/media/{{obj.image}}">
+			</div>
+			<div class="col-4">
 				<ul>
-					<li><h2>{{obj.description}}</h2></li>
-					<li><p>{{obj.dish_name}}</p></li>
+					<li><h2>{{obj.dish_name}}</h2></li>
+					<li><p>{{obj.description}}</p></li>
 				</ul>
+			</div>
 			<div class="col-lg-4 col-md-4 col-sm-12 d-flex justify-content-end p-4 but">
 				<h1 class="p-3">{{obj.price}}</h1>
 				<form method = "post" action ="{% url 'main:delete_rest' obj.id %}">

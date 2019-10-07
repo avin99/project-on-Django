@@ -38,7 +38,7 @@ class dishform(forms.ModelForm):
 
     class Meta:
         model = dishes
-        fields=('dish_name','description','price','image')
+        fields=('dish_name','description','price','image','dish_category')
 
 class EditProfileForm(UserChangeForm):
 

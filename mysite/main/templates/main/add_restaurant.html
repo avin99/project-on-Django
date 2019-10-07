@@ -27,40 +27,8 @@
 				
                 <form method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
-				<div class="input">
-				<div class="row">
-                	<div class="col-lg-4 col-md-4 col-sm-12 p-3">
-						<h3><label for="id_dish_name">Dish name:</label>
-					</div>
-					<div class="col-lg-8 col-md-8 col-sm-12 p-3">
-						<input class="form-control input-md" type="text" name="dish_name" maxlength="100" required="" id="id_dish_name"></h3>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-4 col-md-4 col-sm-12 p-3">
-						<h3><label for="id_description">Description:</label>
-					</div>
-					<div class="col-lg-8 col-md-8 col-sm-12 p-3">
-						<textarea class="form-control input-md" name="description" cols="40" rows="10" required="" id="id_description"></textarea></h3>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-4 col-md-4 col-sm-12 p-3">
-						<h3><label for="id_price">Price:</label>
-					</div>
-					<div class="col-lg-8 col-md-8 col-sm-12 p-3"> 
-						<input class="form-control input-md" type="number" name="price" required="" id="id_price"></h3>
-					</div>
-				</div>
-			</div>
-				<div class="row">
-					<div class="col-lg-4 col-md-4 col-sm-12 p-3">
-						<h3><label for="id_image">Image:</label>
-					</div> 
-					<div class="col-lg-8 col-md-8 col-sm-12 p-3">
-						<input type="file" name="image" accept="image/*" required="" id="id_image"></h3>
-					</div>
-				</div>
+				{{form.as_p}}
+				
                 {% comment %} <input type="hidden" name="csrfmiddlewaretoken" value="Pz00GObSvTN9efaQajexFDmg0q2mrp4XEfJk35Qi7Z0ugDWVepjpyRT75Rxgz0Ji"> {% endcomment %}
                 <div class="row">
 					<div class="col-12 d-flex justify-content-center">

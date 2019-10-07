@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from .forms import SignUpForm1,dishform,SignUpForm2,EditProfileForm
-from .models import dishes,User,UserProfile,Orders,OrderStatus,Contact
+from .models import dishes,User,UserProfile,Orders
 from django.views.generic import TemplateView,CreateView
 from django.forms import modelformset_factory
 from django.conf import settings
@@ -29,12 +29,31 @@ from .forms import dishform,EditDishForm
 from django.db.models import Q
 from django.http import HttpResponse
 from django.views import View
-import json
 # Create your views here.
 #customer_profile.html
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
+
+def veg(request,pk):
+    k = User.objects.filter (pk=pk)
+    d = dishes.objects.filter(dish_category='Veg')
+    return render(request,'main/dish_info.html',{'d':d,'k':k})
+
+def non_veg(request,pk):
+    k = User.objects.filter (pk=pk)
+    d = dishes.objects.filter(dish_category='Non-Veg')
+    return render(request,'main/dish_info.html',{'d':d,'k':k})
+
+def chinese(request,pk):
+    k = User.objects.filter (pk=pk)
+    d = dishes.objects.filter(dish_category='Chinese')
+    return render(request,'main/dish_info.html',{'d':d,'k':k})
+
+def italian(request,pk):
+    k = User.objects.filter (pk=pk)
+    d = dishes.objects.filter(dish_category='Italian')
+    return render(request,'main/dish_info.html',{'d':d,'k':k})
 
 class customer(View):
     def get(self,request):
@@ -308,11 +327,13 @@ class login_request(View):
             user = authenticate(username=username, password=password)        
             if user is not None:                                            
                 login(request, user)                                         
-                messages.info(request, f"You are now logged in as {username}")    
+                    
                 if user.is_owner:
                     return redirect('main:owner_profile')
+                    messages.success(request, f"You are now logged in as {username}")
                 else:  
-                    return redirect("main:customer")                              
+                    return redirect("main:customer")        
+                    messages.success(request, f"You are now logged in as {username}")
             else:                                                            
                  messages.error(request, "Invalid username or password.")     
                  form=self.form_class(initial=self.initial)
@@ -429,14 +450,11 @@ def checkout(request):
         phone = request.POST.get('phone', '')
         order = Orders(items_json=items_json,phone=phone)
         order.save()
-        update = OrderStatus(order_id=order.order_id, update_desc="The order has been placed")
-        update.save()
         check = True
         id = order.order_id
         return render(request, 'main/checkout.html', {'check':check, 'id': id})
     return render(request, 'main/checkout.html')
 
-<<<<<<< HEAD
 class owner_edit(View):
     def get(self,request):
         return render(request,'main/owner_edit.html')
@@ -479,33 +497,5 @@ def Contact_Us(request):
 def Devlopers(request):
     return render(request,"main/Devlopers.html")
 
-
-# @login_required
-# def password_change(request):
-#     if request.method=='POST':
-#         form = PasswordChangeForm(data=request.POST,user=request.user)
-#         if form.is_valid():
-#             user=form.save()
-#             update_session_auth_hash(request,form.user)
-#             if user.is_owner:
-#                 return redirect("main:owner_profile")
-#             else:
-#                 return redirect("main:customer")
-#         else:
-#             return redirect("main:password_change")
-#     else:
-#         form=PasswordChangeForm(user=request.user)
-#         args = {'form':form}
-#         return render(request,'main/password_change.html',args)
-
-=======
-def contact(request):
-    if request.method=="POST":
-        name = request.POST.get('name', '')
-        email = request.POST.get('email', '')
-        phone = request.POST.get('phone', '')
-        desc = request.POST.get('desc', '')
-        contact = Contact(name=name, email=email, phone=phone, desc=desc)
-        contact.save()
-    return render(request, 'main/contact.html')  
->>>>>>> 1b40ab6eec0c3b53edde11509c8703cc5bc8ee0d
+def order_confirm(request):
+    return render(request,'main/order_confirm.html')

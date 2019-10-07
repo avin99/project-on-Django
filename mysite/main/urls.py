@@ -30,14 +30,15 @@ urlpatterns=[
     #url(r'^customer/(?P<pk>\d)/$',views.County_Details, name='County_Details'),
     path('edit_dish/<int:pk>',views.edit_dish, name='edit_dish'),
     path("checkout/", views.checkout, name="Checkout"),
-<<<<<<< HEAD
     path("About_Us/", views.About_Us, name="About_Us"),
     path("Contact_Us/", views.Contact_Us, name="Contact_Us"),
     path("Devlopers/", views.Devlopers, name="Devlopers"),
+    path("order_confirm/", views.order_confirm, name="order_confirm"),
+    url(r'^veg/(?P<pk>\d)/$', views.veg, name="vegetarian"),
+    url(r'^non-veg/(?P<pk>\d)/$', views.non_veg, name="non-vegetarian"),
+    url(r'^chinese/(?P<pk>\d)/$', views.chinese, name="chinese"),
+    url(r'^italian/(?P<pk>\d)/$', views.italian, name="italian"),
     #path("password_change/", views.password_change, name="password_change"),
-=======
-    path("contact/", views.contact, name="ContactUs"),
->>>>>>> 1b40ab6eec0c3b53edde11509c8703cc5bc8ee0d
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
 ]

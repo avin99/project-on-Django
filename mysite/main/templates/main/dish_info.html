@@ -30,6 +30,19 @@
 				<div class="row head">
 					<div class="col-lg-12 col-md-12 col-sm-12 p-3 d-flex justify-content-center"><h1>{{obj}}</h1></div>
 					<div class="col-lg-12 col-md-12 col-sm-12 p-3 d-flex justify-content-center"><h2></h2></div>
+			
+			<div>
+			<a href="/veg/{{obj.id}}"<ul>Vegetarian</a></ul>
+			</div>
+			<div>
+			<a href="/non-veg/{{obj.id}}"<ul>Non-Vegetarian</a></ul>
+			</div>
+			<div>
+			<a href="/chinese/{{obj.id}}"<ul>Chinese</a></ul>
+			</div>
+			<div>
+			<a href="/italian/{{obj.id}}"<ul>Italian</a></ul>
+			</div>
 			{% endfor %}
 					<div class="col-lg-12 col-md-12 col-sm-6 p-3 d-flex justify-content-center"><h3>There is no sincere love than love of food</h3></div>
 				</div>
@@ -71,7 +84,7 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 		<div class="row footer">
 			<div class="col-12 d-flex justify-content-start">
 				<div class=""><a target="blank" href="../html_file/About_Us.html">About</a></div>
-				<div class=""><a href="/contact">Contact Us</a></div>
+				<div class=""><a href="">Contact Us</a></div>
 				<div class=""><a href="">Devlopers</a></div>
 			</div>
 		</div>
@@ -88,9 +101,7 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 	if (localStorage.getItem('cart') == null) {
     var cart = {};
 } else {
-	console.log("checking");
-	cart = JSON.parse(localStorage.getItem('cart')); 
-	console.log(cart);
+    cart = JSON.parse(localStorage.getItem('cart')); 
     updateCart(cart);
 }
 $('.divpr').on('click','button.cart',function() {
@@ -151,7 +162,7 @@ function updateCart(cart) {
       sum=sum+cart[item][0];
         document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-outline-dark minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-outline-dark plus'> + </button>";
     }
-    localStorage.setItem('cart', JSON.stringify(cart));	
+    localStorage.setItem('cart', JSON.stringify(cart));
     document.getElementById('cart').innerHTML = sum;
     console.log(cart);
     updatePopover(cart);
